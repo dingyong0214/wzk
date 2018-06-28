@@ -1,0 +1,233 @@
+@charset "UTF-8";
+
+@import "sassCore/function";
+
+$baseColor:#fe7000;//色系#f4a00b
+$backgroundColor:#fff;//e6e6e6 背景颜色
+$baseFontPath:"../../fonts/"; //字体路径
+$basePath:"../../images/"; //背景图片路径  ../../images/ http://imgs.cayica.com/img/1.0.0/ http://img.cayica.t/img/1.0.0/
+$lrpm:3%; // 左右padding
+$lrpx:10px;// 首页顶部padding
+$moneyColor:#f00;
+$baseFontSize:16px;//html font-size大小
+$basedpr:false;//是否采用淘宝flexible 适配方案，即根据屏幕dpr修改字体大小,该值为 false,1,2 ；false代表不采用淘宝适配方案，1代表一倍设计稿，2代表两倍设计稿，750设计稿时值为2
+$font_size_rem:true;//font-size是否以rem为单位，否则以px为单位,值为true时，$basedpr 不影响font-size
+$isdebug:false;//是否启用调试，调试时 单位为px，不转成rem,包括字体，即值为true时 $font_size_rem 无效
+
+//修改sassCore基础函数使之兼容性更好
+@mixin transform($property...) {
+  @include prefixer(transform, $property, o webkit ms);
+}
+//修改结束
+@mixin flex_box() {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	-webkit-flex-direction: row;
+	-moz-flex-direction: row;
+	flex-direction: row;
+}
+@mixin flex_h_justify() {
+	-webkit-box-pack: justify;
+	-moz-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-moz-justify-content: space-between;
+	justify-content: space-between;
+}
+@mixin flex_h_center() {
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	-webkit-justify-content: center;
+	-moz-justify-content: center;
+	justify-content: center;
+}
+@mixin flex_v_center() {
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+@mixin arr_down($size:15px,$color:$baseColor){//箭头向下 $size 为大小，$color为箭头颜色
+	height:$size;
+	width:$size;
+	border-right:2px solid #666;
+	border-bottom:2px solid #666;
+	@include transform(rotate(45deg));
+}
+@mixin arr_down_b($size:15px,$color:$baseColor){//箭头向下--实心
+	height:0;
+	width:0;
+	border:$size solid rgba(0,0,0,0);
+	border-top-color:$color;
+}
+@mixin arr_up($size:15px,$color:$baseColor){//箭头向下
+	height:$size;
+	width:$size;
+	border-right:1px solid $color;
+	border-bottom:1px solid $color;
+	@include transform(rotate(-135deg));
+}
+@mixin arr_up_b($size:15px,$color:$baseColor){//箭头向下--实心
+	height:0;
+	width:0;
+	border:$size solid rgba(0,0,0,0);
+	border-bottom-color:$color;
+}
+@mixin arr_left($size:15px,$color:$baseColor){ //箭头向左
+	height:$size;
+	width:$size;
+	border-right:1px solid $color;
+	border-bottom:1px solid $color;
+	@include transform(rotate(135deg));
+}
+@mixin arr_right($size:15px,$color:$baseColor){ //箭头向右
+	height:$size;
+	width:$size;
+	border-right:1px solid $color;
+	border-bottom:1px solid $color;
+	@include transform(rotate(-45deg));
+}
+@mixin img_v_center(){//图片垂直居中
+	position:absolute;
+	width:100%;
+	left:0;
+	top:50%;
+	@include transform(translate(0, -50%));
+}
+@mixin img_h_center(){
+	height: 100%;
+	position: absolute;
+	left: 50%;
+	top:0;
+	@include transform(translate(-50%, 0));
+}
+@mixin img_center() {//图片垂直水平居中
+	max-height: 100%;
+	max-width: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	@include transform(translate(-50%, -50%));
+}
+@mixin ellipsis(){
+	overflow:hidden;
+	white-space:nowrap;
+	-o-text-overflow:ellipsis;
+	text-overflow:ellipsis;
+}
+@mixin clearfix(){//清除浮动
+	*zoom: 1;
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+%clearfix{
+	@include clearfix;
+}
+
+
+@function px2rem($px, $base-font-size:$baseFontSize) {//px转rem
+	@if (unitless($px)) {
+		@warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+		@return px2rem($px + 0px);
+		// That may fail.
+	}
+	@else if (unit($px) == rem) {
+		@return $px;
+	}
+	@return ($px / $base-font-size) * 1rem;
+}
+@function px2px($px){//px转px
+	@if (unitless($px)) {
+		@warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+		@return px2px($px + 0px);
+		// That may fail.
+	}
+	@else if (unit($px) == px) {
+		@return $px;
+	}
+	@return $px * 1px;
+}
+@function r($px) {//px转rem,缩写
+	@if $isdebug{//为了方便调试，制作过程，不转为rem 单位仍为px
+		@return px2px($px);
+	}
+	@else{
+		@return px2rem($px);
+	}
+}
+@mixin font-dpr($font-size) {//设计稿dpr为1时,字体大小
+	font-size: $font-size;
+	[data-dpr="2"] & {
+		font-size: $font-size * 2;
+	}
+	[data-dpr="3"] & {
+		font-size: $font-size * 3;
+	}
+}
+@mixin font-dpr2($font-size) {//设计稿dpr为2时,字体大小
+	font-size: $font-size / 2;
+	[data-dpr="2"] & {
+		font-size: $font-size;
+	}
+	[data-dpr="3"] & {
+		font-size: $font-size * 1.5;
+	}
+}
+@mixin f($px,$dpr:$basedpr){//字体大小设置,单位是否为rem
+	@if $font_size_rem and not $isdebug{//字体单位为rem并且不调试
+		font-size:r($px);
+	}
+	@else{
+		$px:px2px($px);
+		@if $dpr == 1 {//字体大小设置，是否根据屏幕dpr（为了以后兼容淘宝flexible）,如否，大小直接转为rem
+			@include font-dpr($px);
+		}
+		@else if $dpr == 2{
+			@include font-dpr2($px);
+		}
+		@else{
+			font-size:$px;
+		}
+	}
+}
+
+@mixin px2rem($property,$px-values,$baseline-px:$baseFontSize,$support-for-ie:false){//其他属性值单位设为rem
+	$baseline-rem: $baseline-px / 1rem * 1;
+	@if $support-for-ie {
+		#{$property}: $px-values;
+	}
+	@if type-of($px-values) == "number"{
+		#{$property}: $px-values / $baseline-rem;
+	}
+	@else {
+		$rem-values:();
+		@each $value in $px-values{
+			@if $value == 0 or type-of($value) != "number"{
+				$rem-values: append($rem-values, $value / $baseline-rem);
+			}
+		}
+		#{$property}: $rem-values;
+	}
+}
+
+//媒介查询
+@mixin max-screen($res) {
+	@media screen and (max-width:$res) {
+		@content;
+	}
+}
+@mixin min-screen($res) {
+	@media screen and (min-width:$res) {
+		@content;
+	}
+}

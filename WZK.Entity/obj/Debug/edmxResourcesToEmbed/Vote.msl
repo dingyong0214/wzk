@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VoteModelStoreContainer" CdmEntityContainer="VoteEntities">
+    <EntitySetMapping Name="Duty">
+      <EntityTypeMapping TypeName="VoteModel.Duty">
+        <MappingFragment StoreEntitySet="Duty">
+          <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="InsertUser" ColumnName="InsertUser" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HouXuanRen">
+      <EntityTypeMapping TypeName="VoteModel.HouXuanRen">
+        <MappingFragment StoreEntitySet="HouXuanRen">
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="InsertUser" ColumnName="InsertUser" />
+          <ScalarProperty Name="XuHao" ColumnName="XuHao" />
+          <ScalarProperty Name="IsDangXuan" ColumnName="IsDangXuan" />
+          <ScalarProperty Name="ChooseTime" ColumnName="ChooseTime" />
+          <ScalarProperty Name="DutyId" ColumnName="DutyId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MenuButton">
+      <EntityTypeMapping TypeName="VoteModel.MenuButton">
+        <MappingFragment StoreEntitySet="MenuButton">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="InputUser" ColumnName="InputUser" />
+          <ScalarProperty Name="ButtonType" ColumnName="ButtonType" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="VoteModel.Menus">
+        <MappingFragment StoreEntitySet="Menus">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="InputUser" ColumnName="InputUser" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="MenuType" ColumnName="MenuType" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="VoteModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="InputUser" ColumnName="InputUser" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="ButtonIds" ColumnName="ButtonIds" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAdmin">
+      <EntityTypeMapping TypeName="VoteModel.UserAdmin">
+        <MappingFragment StoreEntitySet="UserAdmin">
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="InputUser" ColumnName="InputUser" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VerifyCode">
+      <EntityTypeMapping TypeName="VoteModel.VerifyCode">
+        <MappingFragment StoreEntitySet="VerifyCode">
+          <ScalarProperty Name="VerifyNum" ColumnName="VerifyNum" />
+          <ScalarProperty Name="Way" ColumnName="Way" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="CodeType" ColumnName="CodeType" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="BussinessType" ColumnName="BussinessType" />
+          <ScalarProperty Name="VerifyFlag" ColumnName="VerifyFlag" />
+          <ScalarProperty Name="VerifyTime" ColumnName="VerifyTime" />
+          <ScalarProperty Name="ValidTimeLen" ColumnName="ValidTimeLen" />
+          <ScalarProperty Name="ValidTime" ColumnName="ValidTime" />
+          <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VoteDetail">
+      <EntityTypeMapping TypeName="VoteModel.VoteDetail">
+        <MappingFragment StoreEntitySet="VoteDetail">
+          <ScalarProperty Name="HouXuanId" ColumnName="HouXuanId" />
+          <ScalarProperty Name="VoteTime" ColumnName="VoteTime" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Member">
+      <EntityTypeMapping TypeName="VoteModel.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="GetuiIosId" ColumnName="GetuiIosId" />
+          <ScalarProperty Name="GetuiAndroidId" ColumnName="GetuiAndroidId" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="TuiJianTime" ColumnName="TuiJianTime" />
+          <ScalarProperty Name="TuiJianUserId" ColumnName="TuiJianUserId" />
+          <ScalarProperty Name="JoinTime" ColumnName="JoinTime" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="MainBusiness" ColumnName="MainBusiness" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="JiGuan" ColumnName="JiGuan" />
+          <ScalarProperty Name="WorkAddress" ColumnName="WorkAddress" />
+          <ScalarProperty Name="HomeAddress" ColumnName="HomeAddress" />
+          <ScalarProperty Name="Duty" ColumnName="Duty" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Introduction" ColumnName="Introduction" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="MemberNo" ColumnName="MemberNo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="VoteModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElectionProcessDetail">
+      <EntityTypeMapping TypeName="VoteModel.ElectionProcessDetail">
+        <MappingFragment StoreEntitySet="ElectionProcessDetail">
+          <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="InsertUser" ColumnName="InsertUser" />
+          <ScalarProperty Name="DutyId" ColumnName="DutyId" />
+          <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZhangCheng">
+      <EntityTypeMapping TypeName="VoteModel.ZhangCheng">
+        <MappingFragment StoreEntitySet="ZhangCheng">
+          <ScalarProperty Name="XuHao" ColumnName="XuHao" />
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="InsertUser" ColumnName="InsertUser" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZhangChengVote">
+      <EntityTypeMapping TypeName="VoteModel.ZhangChengVote">
+        <MappingFragment StoreEntitySet="ZhangChengVote">
+          <ScalarProperty Name="VoteTime" ColumnName="VoteTime" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="ZhangChengId" ColumnName="ZhangChengId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserOperate">
+      <EntityTypeMapping TypeName="VoteModel.UserOperate">
+        <MappingFragment StoreEntitySet="UserOperate">
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="ProcessDetailId" ColumnName="ProcessDetailId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElectionProcess">
+      <EntityTypeMapping TypeName="VoteModel.ElectionProcess">
+        <MappingFragment StoreEntitySet="ElectionProcess">
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="InsertUser" ColumnName="InsertUser" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="ContentFlag" ColumnName="ContentFlag" />
+          <ScalarProperty Name="StepName" ColumnName="StepName" />
+          <ScalarProperty Name="Step" ColumnName="Step" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HouXuanRenData">
+      <EntityTypeMapping TypeName="VoteModel.HouXuanRenData">
+        <MappingFragment StoreEntitySet="HouXuanRenData">
+          <ScalarProperty Name="InsertTime" ColumnName="InsertTime" />
+          <ScalarProperty Name="InsertUser" ColumnName="InsertUser" />
+          <ScalarProperty Name="IsDangXuan" ColumnName="IsDangXuan" />
+          <ScalarProperty Name="ChooseTime" ColumnName="ChooseTime" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="DutyId" ColumnName="DutyId" />
+          <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+          <ScalarProperty Name="Duty" ColumnName="Duty" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="XuHao" ColumnName="XuHao" />
+          <ScalarProperty Name="ChooseDuty" ColumnName="ChooseDuty" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "权限管理-角色管理-设置角色权限";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    <style>
+        label {
+            display: inline-block;
+            font-weight: 700;
+            margin-bottom: 5px;
+            max-width: 100%;
+            vertical-align: middle;
+        }
+
+        input[type="checkbox"] {
+            line-height: normal;
+            margin: 4px 0 0;
+            vertical-align: top;
+        }
+    </style>
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">权限管理</a>
+            <a href="@Url.Action("RoleList","Right")">角色管理</a>
+            <a href="javascript:;">设置权限</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                      @using (Ajax.BeginForm("SaveRoleRight", "Right", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success" }, new { @class = "form-horizontal" }))
+                      {
+                        <input type="hidden" name="RoleId" value="@ViewBag.RoleId" />
+                            <div class="control-group">
+                                <label class="control-label">功能模块：</label>
+                                <div class="controls">
+                                    <div id="div_begin">
+                                        <input type="checkbox" name="menus" id="ckb_menu0" pa="-1" menuId="0"><label style="font-weight: normal; cursor:pointer;" for="ckb_menu0" ml="0">全部</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            //获取数据源
+            var menus = @(MvcHtmlString.Create(ViewBag.Menus));
+            var actions = @(MvcHtmlString.Create(ViewBag.Actions));
+            var rights = @(MvcHtmlString.Create(ViewBag.Rights));
+
+            //定义菜单组
+            var mg = new Array();
+            for (var i = 0; i < menus.length; i++) {
+                if (mg[menus[i].ParentId]==undefined) {
+                    mg[menus[i].ParentId] = new Array();
+                }
+                mg[menus[i].ParentId].push(menus[i]);
+            }
+
+            //定义按钮组
+            var ag = new Array();
+            for (var i = 0; i < actions.length; i++) {
+                if (ag[actions[i].MenuId]==undefined) {
+                    ag[actions[i].MenuId] = new Array();
+                }
+                ag[actions[i].MenuId].push(actions[i]);
+            }
+
+            //递归显示菜单
+            function getItems(id){
+                for (var i = 0; i < mg[id].length; i++) {
+                    var parent = null;
+                    var ml = 0;
+                    if (id==0) {
+                        parent = $("#div_begin");
+                    }else {
+                        parent = $("label[for=ckb_menu"+id+"]").next("div");
+                        ml = parseInt(parent.prev().attr("ml"))+20;
+                    }
+                    parent.append('<div class="item" style="margin-left:'+ml+'px;"><input type="checkbox"  id="ckb_menu'+mg[id][i].Id+'" pa="'+mg[id][i].ParentId+'" menuId="'+mg[id][i].Id+'" /><label style="font-weight: normal; cursor:pointer;" for="ckb_menu'+mg[id][i].Id+'" ml='+ml+'>'+mg[id][i].Name+'：</label><div style="margin-left:'+ml+'px; float:none;"></div></div>');
+                    var mid = mg[id][i].Id;
+                    if (mg[mid]!=undefined) {
+                        getItems(mid);
+                    }else {
+                        if (ag[mid]!=undefined) {
+                            $("label[for=ckb_menu"+mid+"]").next().css("display","inline").css("margin-left","20px");
+                            for (var j = 0; j < ag[mid].length ; j++) {
+                                $("label[for=ckb_menu"+mid+"]").next().append('<input style="margin-left:10px;" type="checkbox" '+(j==0?" base='1'":"")+' pa="'+ag[mid][j].MenuId+'" name="actions" value="'+ag[mid][j].Id+'" id="ckb_action'+ag[mid][j].Id+'" /><label style="font-weight: normal; color: cursor:pointer;" for="ckb_action'+ag[mid][j].Id+'">'+ag[mid][j].Name+'</label>');
+                            }
+                        }
+                    }
+                }
+            }
+            getItems(0);
+
+            //子级处理
+            function dealChild($this){
+                var con = $this.prop("checked");
+
+                if($this.attr("menuId")!=undefined){
+                    $("input[pa="+$this.attr("menuId")+"]").prop("checked",con);
+                    $("input[pa="+$this.attr("menuId")+"]").each(function(){
+                        dealChild($(this));
+                    });
+                }
+            }
+            //父级处理
+            function dealParent($this){
+                var con = $this.prop("checked");
+
+                if ((con && $("input[pa="+$this.attr("pa")+"]:not(:checked)").length==0)||(!con && $("input[pa="+$this.attr("pa")+"]:not(:checked)").length==1)) {
+                    $("#ckb_menu"+$this.attr("pa")).prop("checked",con);
+                    dealParent($("#ckb_menu"+$this.attr("pa")));
+                }
+            }
+            //兄弟节点处理
+            function dealSiblings($this){
+                var con = $this.prop("checked");
+
+                if ($this.attr("base")==undefined && con) {
+                    $this.siblings("input[base]").prop("checked",con);
+                }else if ($this.attr("base")=="1" && !con) {
+                    $this.siblings("input:not([base])").prop("checked",con);
+                }
+            }
+            //定义checkbox的点击事件
+            $(document).on("click","input:checkbox",function(){
+                dealChild($(this));
+                dealParent($(this));
+                dealSiblings($(this));
+            });
+
+            //初始化
+            for (var i = 0; i < rights.length; i++) {
+                $("#ckb_action"+rights[i]).click();
+            }
+        });
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功",{time:1000,icon:1},function(){
+                    window.location.href = "/Right/RoleList";
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+            }
+        }
+    </script>
+}

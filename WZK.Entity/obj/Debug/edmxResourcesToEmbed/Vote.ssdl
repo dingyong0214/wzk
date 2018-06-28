@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VoteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Duty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SortNo" Type="int" Nullable="false" />
+    <Property Name="InsertUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ElectionProcess">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Step" Type="int" Nullable="false" />
+    <Property Name="StepName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ContentFlag" Type="int" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="InsertUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ElectionProcessDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProcessId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DutyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SortNo" Type="int" Nullable="false" />
+    <Property Name="InsertUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HouXuanRen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MemberId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DutyId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Number" Type="int" Nullable="false" />
+    <Property Name="ChooseTime" Type="datetime" />
+    <Property Name="IsDangXuan" Type="bit" />
+    <Property Name="XuHao" Type="int" Nullable="false" />
+    <Property Name="InsertUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HouXuanRenData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ChooseDuty" Type="varchar" MaxLength="64" />
+    <Property Name="XuHao" Type="int" />
+    <Property Name="Company" Type="nvarchar" MaxLength="64" />
+    <Property Name="Name" Type="varchar" MaxLength="64" />
+    <Property Name="Duty" Type="nvarchar" MaxLength="64" />
+    <Property Name="MemberId" Type="uniqueidentifier" />
+    <Property Name="DutyId" Type="uniqueidentifier" />
+    <Property Name="Number" Type="int" />
+    <Property Name="ChooseTime" Type="datetime" />
+    <Property Name="IsDangXuan" Type="bit" />
+    <Property Name="InsertUser" Type="uniqueidentifier" />
+    <Property Name="InsertTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MemberId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MemberNo" Type="int" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="128" />
+    <Property Name="Name" Type="varchar" MaxLength="64" />
+    <Property Name="Sex" Type="varchar" MaxLength="8" />
+    <Property Name="Introduction" Type="nvarchar" MaxLength="512" />
+    <Property Name="Company" Type="nvarchar" MaxLength="64" />
+    <Property Name="Duty" Type="nvarchar" MaxLength="64" />
+    <Property Name="HomeAddress" Type="nvarchar" MaxLength="128" />
+    <Property Name="WorkAddress" Type="nvarchar" MaxLength="64" />
+    <Property Name="JiGuan" Type="nvarchar" MaxLength="64" />
+    <Property Name="CompanyAddress" Type="nvarchar" MaxLength="128" />
+    <Property Name="MainBusiness" Type="nvarchar" MaxLength="256" />
+    <Property Name="IdCard" Type="varchar" MaxLength="256" />
+    <Property Name="JoinTime" Type="datetime" Nullable="false" />
+    <Property Name="TuiJianUserId" Type="uniqueidentifier" />
+    <Property Name="TuiJianTime" Type="datetime" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="GetuiAndroidId" Type="varchar" MaxLength="64" />
+    <Property Name="GetuiIosId" Type="varchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="MenuButton">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Controller" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ButtonType" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="EnglishName" Type="varchar" MaxLength="32" />
+    <Property Name="Url" Type="varchar" MaxLength="128" />
+    <Property Name="MenuType" Type="int" Nullable="false" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ButtonIds" Type="varchar(max)" />
+    <Property Name="OrderNo" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Photo" Type="varchar" MaxLength="256" />
+    <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="IdCard" Type="varchar" MaxLength="256" />
+    <Property Name="Department" Type="nvarchar" MaxLength="32" />
+    <Property Name="Mobile" Type="varchar" MaxLength="128" />
+    <Property Name="Telephone" Type="varchar" MaxLength="20" />
+    <Property Name="Mail" Type="varchar" MaxLength="100" />
+    <Property Name="RegisterTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="varchar" MaxLength="128" />
+    <Property Name="InputUser" Type="uniqueidentifier" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserOperate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MemberId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProcessDetailId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VerifyCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="SendTime" Type="datetime" Nullable="false" />
+    <Property Name="ValidTime" Type="datetime" Nullable="false" />
+    <Property Name="ValidTimeLen" Type="int" Nullable="false" />
+    <Property Name="VerifyTime" Type="datetime" />
+    <Property Name="VerifyFlag" Type="int" Nullable="false" />
+    <Property Name="BussinessType" Type="int" Nullable="false" />
+    <Property Name="Channel" Type="int" Nullable="false" />
+    <Property Name="CodeType" Type="int" Nullable="false" />
+    <Property Name="IP" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Way" Type="int" Nullable="false" />
+    <Property Name="VerifyNum" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VoteDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MemberId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="HouXuanId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Result" Type="int" Nullable="false" />
+    <Property Name="VoteTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZhangCheng">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="XuHao" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="InsertUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZhangChengVote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MemberId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ZhangChengId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Result" Type="int" Nullable="false" />
+    <Property Name="VoteTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="VoteModelStoreContainer">
+    <EntitySet Name="Duty" EntityType="Self.Duty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ElectionProcess" EntityType="Self.ElectionProcess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ElectionProcessDetail" EntityType="Self.ElectionProcessDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouXuanRen" EntityType="Self.HouXuanRen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HouXuanRenData" EntityType="Self.HouXuanRenData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuButton" EntityType="Self.MenuButton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAdmin" EntityType="Self.UserAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserOperate" EntityType="Self.UserOperate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VerifyCode" EntityType="Self.VerifyCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VoteDetail" EntityType="Self.VoteDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZhangCheng" EntityType="Self.ZhangCheng" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZhangChengVote" EntityType="Self.ZhangChengVote" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

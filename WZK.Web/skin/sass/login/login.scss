@@ -1,0 +1,471 @@
+@charset "UTF-8";
+@import "../public/all";
+
+
+
+
+//登录
+.fl{ float:left;} .fr{ float:right;}
+.clearfix:after{ content:""; display:block; height:0; visibility: hidden; clear:both;}
+.loginPage{ width:100%; min-width: 1190px; position: relative; 
+	//min-height: 580px;
+}
+.loginPage .bgImg{
+	//position:absolute; top:120px; left:10px; width:100%;
+	width:100%;
+	padding:34px 0 34px;
+	img{
+		width:545px;//600
+		margin-left:50px;
+	}
+}
+.loginPage .v3_container{ position:relative; height:100%; padding-bottom: 20px; z-index: 5;}
+.loginHead{
+	margin-left: 0; 
+	//margin-top:47px;
+}
+.loginHead .logo{display:inline-block;vertical-align:middle; text-align:center;
+	.img{
+		display:block;     
+		background: url(#{$basePath}v4_index_04.png) center 0 no-repeat;
+	    width: 194px;
+	    height: 44px;
+	    margin-top: -18px;
+	}
+}
+.loginMain .tips{ position:relative; line-height: 22px; z-index: 2; font-size:12px; color:#666666; border:1px solid #ffeda4; background:#fff6d2; width:290px; margin:0 auto; margin-top:7px; padding:3px 5px;}
+.loginMain .tips i{ background:url(#{$basePath}spr2.png) no-repeat; background-position:-197px 0; width:20px; height:21px; display:inline-block; vertical-align: middle; margin-right: 5px;}
+.loginHead .caption{ display:inline-block; vertical-align: middle; border-left: 1px solid #bbbbbb; font-size: 24px; color:#666; line-height: 82px; margin-left: 20px; padding-left: 20px;}
+.loginPage .loginMain{width:320px; border-radius:4px; padding:15px;  position:absolute; z-index: 20; right:100px; top:120px;-moz-box-shadow: 1px 1px 13px #666666;-webkit-box-shadow: 1px 1px 13px #666666;box-shadow: 1px 1px 13px #666666; }
+.loginMain .boxHead{ overflow: hidden; position:relative;z-index: 5; zoom:1; width:300px; margin:0 auto; }
+.loginMain .boxHead .boxLogo{ float:left;}
+.loginMain .boxHead .fr{ float:right;}
+.loginMain .boxHead .fr a{ display:inline-block;  line-height: 24px;  font-size: 14px;  color: #fe7000; margin-left:5px;}
+.loginMain .boxHead .fr a:hover{ text-decoration:underline;}
+.loginMain .boxHead .fr i{ background:url(#{$basePath}spr2.png) no-repeat; margin-left: 10px; background-position: -231px -146px; width:9px; height:24px; display:inline-block; vertical-align: middle; margin-right: 4px;}
+.loginMain .bContainer{ width:300px; margin:8px auto; height:auto; z-index: 2; position:relative;}
+.loginMain .loginBox{width:300px; height:auto; overflow: hidden; padding-top:5px;}
+.loginMain .bcover{ background:#fff;border-radius:4px; filter:alpha(opacity=80); -moz-opacity:0.8; -khtml-opacity:0.8; opacity:0.8; position:absolute; z-index: 1; top:0; left:0; width:100%; height:100%; _height:400px; _width:350px;}
+.loginBox .userName i{ background:url(#{$basePath}spr2.png) no-repeat; margin-top: 11px; width:15px; display:inline-block; height:15px; background-position: -155px 0;}
+.loginBox .userName i{ width:12px; height:20px; background-position:-196px -146px; margin-top: 8px}
+.loginBox .passWord i{ width:15px; height:18px; background-position:-161px -148px; margin-left:0; margin-top: 10px;}
+.loginBox .userName{ border:1px solid #c1c1c1; height:37px; margin-bottom:15px; overflow: hidden;}
+.loginBox .passWord{ border:1px solid #c1c1c1; height:37px; margin-bottom:15px; overflow: hidden;}
+.loginBox p{ width:37px; float:left; height:37px; border-right:1px solid #c1c1c1; display:inline-block; background:#f3f3f3; text-align: center; vertical-align: middle;}
+.loginBox input{ border:0; background:#fff; width:240px; padding:10px 0 10px 10px; outline:0; color:#666666; font-size: 14px; display: inline-block; vertical-align: middle; float:left;}
+.loginBox i{display: inline-block; vertical-align: middle; line-height: 37px;}
+.loginBox .passWord i{ background:url(#{$basePath}spr2.png) no-repeat; margin-left: 2px; margin-top: 11px; width:12px; display:inline-block; height:14px; background-position: -136px 0;}
+.loginMain .logSelect{overflow: hidden;}
+.loginMain .logSelect input{ display:inline-block; vertical-align: middle;}
+.loginMain .logSelect label{ display:inline-block; vertical-align: middle; padding-left: 5px;}
+.logSelect p span{ background:url(#{$basePath}spr2.png) no-repeat; background-position: 0 -80px; width:23px; height:12px; display:inline-block; vertical-align: middle; margin-left: 5px;}
+.logSelect p{ cursor:pointer; font-size: 14px; color:#999999;}
+.logSelect p.curr span{ background-position: -28px -80px;}
+.logSelect a{ font-size: 14px; color:#666;}
+.loginMain .submit{ display:block; width:100%; outline: 0; height:44px; line-height: 44px; background:#fe7000; border:0; cursor:pointer; color:#fff; font-size: 18px; border-radius: 4px; margin-top: 16px;}
+.fastLogin{display:block;}
+.fastLogin>div{ display:block; overflow: hidden;}
+.fastLogin p{ font-size: 12px; color:#999999; padding:8px 0;}
+.fastLogin a{ display:inline-block; vertical-align: middle; margin:0 28px; width:40px; height:41px; background:url(#{$basePath}spr2.png) no-repeat;}
+.fastLogin .qqLogin{ background-position:-294px -29px;}
+.fastLogin .wxLogin{ background-position:-194px -29px;}
+.fastLogin .xlLogin{ background-position:-243px -29px;}
+.loginPage .copyRight{ position:absolute; bottom:55px; padding-bottom: 0px; z-index:5; left:0; width:100%;}
+.copyRight{ position:relative; padding-bottom: 50px;}
+.copyRight p{ color:#666666; font-size: 12px; text-align: center; line-height: 25px;}
+.loginMain .boxHead span{ font-size:18px; color:#333}
+
+//注册
+.registerBackImg{ background:url(#{$basePath}v4_registerBackImg.png) no-repeat center center; padding-top:122px; overflow:hidden; position:relative;
+	.loginHead{ position:absolute; top:0; left:0;}
+}
+.bindAccount .boxHead{ overflow: hidden; position:relative;z-index: 5; zoom:1; width:300px; margin:0 auto; }
+.bindAccount .boxHead .boxLogo{ float:left;}
+.bindAccount .boxHead .fr{ float:right;}
+.bindAccount .boxHead .fr a{ display:inline-block;  line-height: 24px;  font-size: 14px;  color: #fe7000; margin-left:5px;}
+.bindAccount .boxHead .fr a:hover{ text-decoration:underline;}
+.bindAccount .boxHead .fr i{ background:url(#{$basePath}spr2.png) no-repeat; margin-left: 10px; background-position: -231px -146px; width:9px; height:24px; display:inline-block; vertical-align: middle; margin-right: 4px;}
+.bindAccount .boxHead span{ font-size:18px; color:#333}
+.bindAccount{-moz-box-shadow: 1px 1px 13px #666666;
+    -webkit-box-shadow: 1px 1px 13px #666666;
+    box-shadow: 1px 1px 13px #666666;
+ width:455px; /*margin:100px auto 40px auto;*/ background:#fff; border:1px solid #d1d1d1; padding:18px 0 30px 0; position:absolute; right:50px; top:84px;}
+.bindAccount .linkLogin{ width:100%; position:absolute; top:-25px; font-size:12px; color:#666666; text-align:right; left:0}
+.bindAccount .linkLogin a{ color:#3366cc; cursor:pointer;}
+.bindAccount .linkLogin a:hover{ text-decoration:underline}
+.bindAccount .bindHead{ width:100%;}
+.bindHead h6{ font-size:20px; color:#333333; padding-left:25px;}
+.bindHead .true{ background:url(#{$basePath}spr_login.png) no-repeat; width:30px; height:22px; display:inline-block; margin-right:10px;}
+.bindHead .tips{font-size:16px; padding-top:5px; padding-left: 68px; color:#666;}
+.bindAccount ul{ padding-top:20px;}
+.bindAccount li{ padding-bottom:25px; overflow:hidden; width:100%;}
+.bindAccount li .title{ width:113px; text-align:right; float:left; margin-right:10px; line-height:40px; font-size:14px; color:#999;}
+.bindAccount li .title i{ color:#ff2121; padding-right:5px;}
+.bindAccount li .content{ float: left; width:auto; overflow: hidden; position:relative;}
+.bindAccount .content .icon{ position:absolute; right:12px; top:12px; width:15px; height:16px; display:inline-block; background:url(#{$basePath}spr_login.png) no-repeat;}
+.bindAccount .content .username{ background-position:-40px 0;}
+.bindAccount .content .password{ background-position:-66px 0;}
+.bindAccount li input{ height:20px; padding:10px 0 10px 8px; border:1px solid #d1d1d1;}
+.bindAccount li .tinput{ width:200px;}
+.bindAccount li .sinput{ width:77px;}
+.bindAccount li .cTips{ float:left; line-height: 40px; font-size:14px; color:#ff2121; padding-left: 10px;}
+.bindAccount li .cTips.green{ color:$baseColor;}
+.bindAccount li .btn{ width:110px; height:42px; line-height:42px;vertical-align:-2px; display:inline-block; background:#53c710; color:#ffffff; border-radius:4px; font-size:14px; cursor:pointer; margin-left: 10px; text-align:center;}
+.bindAccount .xieyi{ padding-left:133px; font-size:12px; color:#333;}
+.bindAccount .xieyi a{ font-size:12px; color:#3366cc;}
+.bindAccount .xieyi a:hover{ text-decoration:underline;}
+.bindAccount .submit{ width:210px; height:40px; color:#fff;font-family:inherit; outline:none; font-size:18px; background:#fe7000; border:0; border-radius:6px; margin-left:123px; margin-top:10px; cursor:pointer;}
+.bindAccount .warntips{ line-height:30px; color:#999; font-size:12px; padding-left:133px;}
+
+
+//注册成功
+.registSuccess{ min-height:300px; padding-top:140px; margin-bottom: 150px; }
+.registSuccess .v3_container{min-height: 0}
+.registSuccess .object{ background: url(#{$basePath}registerSuccess1.png) no-repeat top left; width:540px; margin:0 auto; min-height:85px; padding-left: 140px;padding-top:60px; padding-bottom: 40px;}
+.registSuccess p{ line-height: 25px; font-size:14px; color:#333333; }
+.registSuccess p i{ color:#fe2121; font-size: 16px;}
+.registSuccess p a{ color:#005ea7; cursor:pointer;}
+.registSuccess p a:hover{ text-decoration:underline;}
+.registSuccess .img{ padding-top:60px;}
+.tjcont{  width:540px; margin:0 auto; 
+	.tjuser{ overflow:hidden; line-height:38px;
+		span{ float:left; font-size:14px; color:#999999;}
+		.tjuserbox{
+			position:relative; float:left;
+			input{ height:20px; padding:9px 0 9px 8px; line-height:20px; outline:0; width:310px; border:1px solid #d1d1d1;}
+			i{ position: absolute; right: 12px; top: 12px; width: 15px; height: 16px; display: inline-block; background: url(#{$basePath}spr_login.png) no-repeat;  background-position: -40px 0;}
+		}
+	}
+	.tips{ padding-left:100px; line-height:28px; font-size:14px; color:#333333;}
+	.tjconfim{ padding-left:100px; margin-top:20px;
+		input{width:240px; margin-right:20px; height:40px; background:$baseColor; border:0; line-height:40px; color:#fff; border-radius:4px; font-size:16px; cursor:pointer;}
+		a{ color:#3366cc; font-size:16px; text-decoration:underline; line-height:40px;}
+	}
+}
+
+
+// web4.0登录 注册 找回密码
+.layer_wrap {
+	background: rgba(0, 0, 0, .5);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.login_box {
+	background: #fff;
+	border-radius: 12px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .05), 0 5px 5px rgba(0, 0, 0, .08), 0 7px 10px rgba(0, 0, 0, .09), 0 22px 22px rgba(0, 0, 0, .05);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .05), 0 5px 5px rgba(0, 0, 0, .08), 0 7px 10px rgba(0, 0, 0, .09), 0 22px 22px rgba(0, 0, 0, .05);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .05), 0 5px 5px rgba(0, 0, 0, .08), 0 7px 10px rgba(0, 0, 0, .09), 0 22px 22px rgba(0, 0, 0, .05);
+	margin: -163px 0 0 -218px;
+	width: 436px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	.l_title{
+		border-radius: 12px 12px 0 0;
+		height: 65px;
+		border-bottom: #d1d1d1 solid 1px;
+		box-shadow: 0 2px 6px #d1d1d1;
+		overflow: hidden;
+		h4{
+			color: #666;
+			font-size: 20px;
+			height: 65px;
+			line-height: 65px;
+			padding: 0 0 0 35px;
+		}
+		.close{
+			background: url(#{$basePath}web_icons_spr.png) no-repeat -47px 0;
+			cursor: pointer;
+			height: 19px;
+			overflow: hidden;
+			opacity: .618;
+			width: 19px;
+			position: absolute;
+			right: 23px;
+			top: 23px;
+			-webkit-transition: all .3s linear;
+			-moz-transition: all .3s linear;
+			-o-transition: all .3s linear;
+			transition: all .3s linear;
+			&:hover{
+				opacity:1;
+			}
+		}
+	}
+	.l_content{
+		padding: 30px 30px 20px;
+		ul{
+			li{
+				position:relative;
+				margin-bottom:12px;
+				&.username{
+					.icon{
+						background-position:0 0 ;
+					}
+				}
+				&.password{
+					.icon{
+						background-position:-48px 0;
+					}
+				}
+				&.remember{
+					height:12px;
+					margin:24px 0 36px;
+					font-size:14px;
+					line-height:14px;
+				}
+				&.captcha,&.verification{
+					.l_input{
+						width: 261px;
+						input{
+							width: 179px;
+						}
+					}
+					.icon{
+						background-position:-96px 0;
+					}
+				}
+			}
+			.l_input{
+				background:#f9f9f9;
+				border: #e5e5e5 solid 1px;
+				border-radius: 10px;
+				font-size: 18px;
+				height: 48px;
+				line-height: 48px;
+				opacity: .618;
+				position: relative;
+				transition: opacity .3s ease-in;
+				-moz-transition: opacity .3s ease-in;
+				-webkit-transition: opacity .3s ease-in;
+				-o-transition: opacity .3s ease-in;
+				&:hover{
+					opacity:1;
+				}
+				&.focus{
+					opacity:1;
+					border-color:#ff7900;
+				}
+				&.invalid{
+					opacity:1;
+					border-color:#bc3f3f;
+					.warning{
+						display:inline;
+						opacity: 1;
+						filter:alpha(opacity=100);
+					}
+				}
+				input{
+					background: rgba(255, 255, 255, 0);
+					background: url(#{$basePath}blank.gif)\9;
+					border: 0;
+					outline:none;
+					color: #333;
+					font-size: 18px;
+					height: 34px;
+					*line-height:34px;
+					padding: 0 15px;
+					width: 290px;
+					position: relative;
+					z-index: 10;
+				}
+			}
+			.icon{
+				background: url(#{$basePath}web_input_icons.png) 0 0 no-repeat;
+				border-radius: 10px 0 0 10px;
+				border-right: #e5e5e5 solid 1px;
+				float: left;
+				height: 48px;
+				width: 48px;
+				overflow: hidden;
+			}
+			.placeholder{
+				color: #bebebe;
+				font-size: 18px;
+				position: absolute;
+				left: 65px;
+				top: 0;
+				&.other_p_h{
+					left:15px;
+				}
+			}
+			.warning{
+				background: #bc3f3f;
+				border-radius: 5px;
+				color: #fff;
+				font-size: 12px;
+				height: 24px;
+				line-height: 25px;
+				margin: 13px 0 0;
+				display:none;
+				opacity: 0;
+				filter:alpha(opacity=0);
+				padding: 0 5px;
+				position: absolute;
+				right: 10px;
+				top: 0;
+				z-index: 10;
+			}
+			.tips{
+				height: 110px;
+				width: 220px;
+				display:none;
+				position: absolute;
+				top: -1px;
+				left: 379px;
+				z-index: 6;
+				.arr_left{
+					border-width:8px;
+					border-style:dashed solid dashed dashed;
+					border-color:transparent #fcfcfc transparent transparent;
+					font-size:0;
+					height:0;
+					width:0;
+					position: absolute;
+					z-index: 3;
+					left: -10px;
+					top: 17px;
+				}
+				.warn_icon{
+					width: 20px;
+					height: 19px;
+					background: url(#{$basePath}web_icons_spr.png) -100px 0px no-repeat;
+					position: absolute;
+					z-index: 5;
+					left: 18px;
+					top: 15px;
+				}
+				.tips_main{
+					background: #fcfcfc;
+					box-shadow:-2px 2px 8px rgba(0, 0, 0, .38);
+					color: #616161;
+					border-radius: 12px;
+					font-size: 14px;
+					line-height: 20px;
+					overflow: hidden;
+					padding: 15px 0 15px 25px;
+					text-align: center;
+					width: 350px;
+					position: absolute;
+					left: 5px;
+					top: 0;
+					z-index: 2;
+				}
+			}
+			.verify_con{
+				border: 1px solid #e5e5e5;
+				border-radius: 9px;
+				height: 48px;
+				overflow: hidden;
+				width: 100px;
+				text-align: center;
+				position: absolute;
+				top: 0;
+				right: 0;
+				cursor: pointer;
+				img{
+					width: 100%;
+					height: 48px;
+				}
+				.get_msg_code{
+					display:block;
+					line-height:48px;
+					background: #f3f3f3;
+					font-size:14px;
+					width:100%;
+				}
+			}
+			.auto_login{
+				float:left;
+				color:#ccc;
+				input{
+					vertical-align: top;
+					margin-top:1px;
+				}
+			}
+			.forgotpwd{
+				float:right;
+				color:#ff7900;
+			}
+		}
+		.btn_wrap{
+			clear: both;
+			margin-top:24px;
+			.btn_primary{
+				display:block;
+				height:48px;
+				line-height:48px;
+				text-align:center;
+				color:#fff;
+				background:#ff7900;
+				border-radius: 10px;
+				font-size:20px;
+				width: 100%;
+				&:disabled,&.disabled{
+					background:#ccc;
+				}
+			}
+			.agreement{
+				//text-align:center;
+				// height:60px;
+				// line-height: 60px;
+				height:16px;
+				line-height:16px;
+				padding:0 2px 24px;
+				font-size:12px;
+				color:#787878;
+				//border-bottom:1px solid #e5e5e5;
+				input{
+					vertical-align: middle;
+					margin-top:-3px;
+					margin-right:5px;
+				}
+				a{
+					color:#315af2;
+				}
+			}
+			.tologin{
+				text-align:center;
+				height:60px;
+				line-height: 60px;
+				font-size:12px;
+				a{
+					color:#787878;
+				}
+				span{
+					display:inline-block;
+					padding:0 8px;
+					background:#ff7900;
+					color:#fff;
+					height:20px;
+					line-height:20px;
+					text-align:center;
+					border-radius:3px;
+					margin-left:5px;
+				}
+			}
+		}
+		.info_wrap{
+			text-align: center;
+			font-size: 14px;
+			margin:24px 0;
+			position: relative;
+			.link_btn{
+				color: #ff7900;
+			}
+			.arr_right{
+				background: url(#{$basePath}web_icons_spr.png) -76px 0 no-repeat;
+				position: relative;
+				display: inline-block;
+				width: 14px;
+				height: 14px;
+				top: 2px;
+				margin-left:5px;
+			}
+		}
+	}
+}

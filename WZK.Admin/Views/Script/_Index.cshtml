@@ -1,0 +1,89 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w20">脚本名称</th>
+                <th class="w10">适配App</th>
+                <th class="w15">适配手机型号</th>
+                <th class="w15">适配分辨率</th>
+                <th  class="w10">录入人</th>
+                <th  class="w15">录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="7">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                var ck = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Script", "ScriptDetail");
+                var dk = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Script", "DelScript");
+                var tk = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Task", "ModifyTaskInfo");
+                foreach (WZK.Models.admin.MScript item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td>@item.ScriptName</td>
+                        <td>@item.APPName</td>
+                        <td>@item.MobileTypeName</td>
+                        <td>@item.DPI</td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (ck)
+                                {
+                                    @Html.ActionLink("查看", "ScriptDetail", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+
+                                @if (dk)
+                                {
+                                    <a href="javascript:;" data-id="@item.Id" data-name="@item.ScriptName" class="btn btn-danger xc btn-del btn-mini">删除</a>
+                                }
+                                @if (tk)
+                                {
+                                    @Html.ActionLink("新建任务", "TaskDetail", "Task", new { templateId = item.Id ,tName=item.ScriptName,type=1}, new { @class = "btn btn-primary xc btn-mini" })
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        $(".btn-del").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            var name = $this.data("name");
+            layer.confirm('确认要删除脚本<span class="deltc">“' + name + '”</span>吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DelScript")', { id: id }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg('删除成功', { icon: 1, time: 1000 }, function () {
+                            location.reload(true);
+                        });
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    })
+</script>

@@ -1,0 +1,183 @@
+﻿@model WZK.Admin.Models.Right.ModifyMenuButtonInfo
+
+@{
+    ViewBag.Title = "权限管理-功能管理-" + ViewBag.name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (ViewBag.MenuId != null)
+    {
+        Model.MenuId = (int)ViewBag.MenuId;
+    }
+}
+@section header{
+    <style>
+        #div_menu {
+            margin-left: 0;
+        }
+    </style>
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">权限管理</a>
+            <a href="@Url.Action("ActionList","Right")">菜单按钮管理</a>
+            <a href="javascript:;">@ViewBag.name</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        @using (Ajax.BeginForm("ModifyActionInfo", "Right", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success" }, new { @class = "form-horizontal" }))
+                        {
+                            <div class="control-group" style="padding-bottom:10px;">
+                                <label class="control-label"><span>*</span>所属菜单：</label>
+                                <div class="controls">
+                                    @{
+                                        if (Model.Id == 0)
+                                        {
+                                            Html.RenderPartial("~/Views/Shared/_RightMenu.cshtml");
+                                        }
+                                        else
+                                        {
+                                            ViewDataDictionary dict = new ViewDataDictionary();
+                                            dict.Add("menuId", Model.MenuId);
+                                            Html.RenderPartial("~/Views/Shared/_RightMenu.cshtml", dict);
+                                        }
+                                    }
+                                    @Html.ValidationMessageFor(m => m.MenuId)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>功能名：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Name)
+                                    @Html.ValidationMessageFor(m => m.Name)
+                                    @Html.HiddenFor(m => m.Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>控制器：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Controller)
+                                    <span>多个控制器可用“,”分割</span>
+                                    @Html.ValidationMessageFor(m => m.Controller)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>Action：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Action)
+                                    <span>多个Action可用“,”分割</span>
+                                    @Html.ValidationMessageFor(m => m.Action)
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">排序：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.OrderNo, new { maxlength = "3", style = "width:2%;" })
+                                    @Html.TextBoxFor(m => m.AllOrderNo, new { @readonly = "readonly", style = "width:11%;" })
+                                    <span>同一级别，数量越小越靠前</span>
+                                    @Html.ValidationMessageFor(m => m.OrderNo)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">按钮类型：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.ButtonType, ViewBag.Status as List<SelectListItem>)
+                                    @Html.ValidationMessageFor(m => m.ButtonType)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">录入时间：</label>
+                                <div class="controls">
+                                    <div class="sui-text">
+                                        @Html.ValueFor(m => m.InsertTime)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/Scripts/SringBuilder.js")
+    <script type="text/javascript">
+        var original = "0";
+        var getMenuData;
+
+        $(function () {
+            $("form").data("validator").settings.ignore = "";
+
+            $.validator.addMethod("checkMenuId", function (value, element, params) {
+                if ($(".selection:last :selected").text() == '--请选择--' || value == '0' || value == '') {
+                    return false;
+                } else {
+                    return true;
+                }
+            }, "请选择所属菜单类型");
+
+            $.validator.addMethod("checkAction", function (value, element, params) {
+                if ($("#@Html.IdFor(m=>m.Action)").val().split(',').length != $("#@Html.IdFor(m=>m.Controller)").val().split(',').length) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }, "Action数量与控制器的数量不一致");
+
+            $("#@Html.IdFor(m => m.MenuId)").rules("add", {
+                checkMenuId: true
+            });
+
+            $("#@Html.IdFor(m => m.Action)").rules("add", {
+                checkAction: true
+            });
+
+            $(document).on('change', '[id^=parentCode]', function () {
+                var itemId = $(this).val();
+                BindChange(itemId);
+            })
+
+            $(document).on('keyup', '#OrderNo', function () {
+                var orderNo = $.trim($(this).val());
+                var all = $("#AllOrderNo").val();
+                if (orderNo != "") {
+                    $("#AllOrderNo").val(all.substr(0, all.length - 3) + orderNo);
+                }
+            })
+        });
+
+        function BindChange(menuId) { 
+            var type = 1;//1.菜单按钮 2.菜单
+            $.get('@Url.Action("GetOrderNo")', { menuId: menuId, type: type }, function (data) {
+                if (data.IsPass == true) { 
+                    $("#AllOrderNo").val(data.ReturnObject);
+                    $("input[name='OrderNo']").val(data.ReturnObject.substr(data.ReturnObject.length - 3, 3));
+                }
+            });
+        }
+
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功", { time: 1000, icon: 1 }, function () {
+                    var no = $("#OrderNo").val();
+                    window.location.href = "/Right/ActionList?orderNo=" + no;
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+            }
+        }
+    </script>
+}
+

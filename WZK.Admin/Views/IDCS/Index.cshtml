@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "机房列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">云控管理</a>
+            <a href="javascript:;">机房管理</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content border-top">
+                        <div class="controls controls-row">
+                            <label class="span1 m-wrap search-label">机房名/地址</label>
+                            <input type="text" class="span2 m-wrap" value="" placeholder="请输入机房名/地址" id="name"/>
+                            <button class="span1 m-wrap  btn btn-success" type="button" id="btnSearch">查询</button>
+                            @if (WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("IDCS", "ModifyIDCInfo"))
+                            {
+                                <button class="span1 m-wrap  btn btn-success" type="button" id="btnAdd">新增</button>
+                            }
+                            <input type="hidden" id="hdIndex" value="1" />
+                        </div>
+                    </div>
+                    <div id="container">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/Scripts/Page/showpage.js")
+    <script type="text/javascript">
+        $(function () {
+            //初始化列表数据
+            getPageData($("#hdIndex").val());
+            //搜索
+            $('#btnSearch').click(function (e) {
+                getPageData(1);
+            });
+            //新增
+            $('#btnAdd').click(function () {
+                location.href = "/IDCS/IDCDetail";
+            });
+        });
+        //获取分页数据
+        function getPageData(index) {
+            $.get("/IDCS/_Index/" + index + "?random=" + Math.random(), {
+                name: $("#name").val().trim()
+            }, function (data) {
+                $('#container').html(data);
+            });
+        }
+    </script>
+}

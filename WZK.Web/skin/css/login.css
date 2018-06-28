@@ -1,0 +1,37 @@
+html,body,.mui-content{width: 100%;background: #FFFFFF;font-size: 15px;}
+.mui-icon.mui-icon-closeempty{font-size: 2.1em;color: #FFFFFF;margin-top: -6px;}
+.input_list{
+	border-bottom:1px solid #007aff;
+	height: 50px;
+	margin-bottom: 10px;
+	
+}
+.input_list input{
+	border:0 none;
+	width: 80%;
+}
+.input_list .width{width:46% !important;}
+.input_list .width2{width:57% !important;}
+.login{
+	width:100%;
+	padding:5px 15px;
+	margin-top: 35px;
+}
+
+
+.login_btn{
+	display:block;
+	height:50px;
+	width:100%;
+	margin-top:40px;
+}
+.width-icon .mui-icon.mui-icon-clear{position: relative;top:0px !important;}
+.mui-icon.mui-icon-eye.mui-active{color: #007aff !important;}
+.iconfont.icon-phone-e{color: #007aff !important;position: relative;top:4px;}
+.iconfont.icon-unie637{color: #007aff !important;position: relative;top:3px;font-size: 1.3em;}
+.iconfont.icon-mima{font-size: 1.3em;color: #007aff !important;}
+.mui-btn-outlined{width: 30%;text-align: center; padding: 7px;font-size: 13px;}
+.mui-pull-right.top{margin-top: 3px;}
+.logo{margin: 50px auto 0 auto; display: block; width: 220px;}
+.err{color: red;font-family: "微软雅黑";font-size: 16px;margin: 18px 0;text-align: center;}
+.center{text-align: center;font-family: "微软雅黑";margin-bottom:50px ;margin-top: 20px;font-size: 18px;}

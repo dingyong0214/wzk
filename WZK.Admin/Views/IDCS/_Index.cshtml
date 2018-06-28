@@ -1,0 +1,79 @@
+﻿@{
+    Layout = null;
+}
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w20">机房名</th>
+                <th class="w35">机房地址</th>
+                <th class="10">录入人</th>
+                <th class="15">录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="5">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                var ck = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("IDCS", "IDCDetail");
+                var dk = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("IDCS", "DeleteIDC");
+                foreach (WZK.Models.admin.MIDCS item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td>@item.Name</td>
+                        <td>@item.Address</td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (ck)
+                                {
+                                    @Html.ActionLink("查看", "IDCDetail", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+                              
+                                @if (dk)
+                                {
+                                    <a href="javascript:;" data-id="@item.Id" data-name="@item.Name" class="btn btn-danger xc btn-del btn-mini">删除</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        $(".btn-del").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            var name = $this.data("name");
+            layer.confirm('确认要删除机房<span class="deltc">“' + name + '”</span>吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DeleteIDC")', { id: id }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg('删除成功', { icon: 1, time: 1000 }, function () {
+                            location.reload(true);
+                        });
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    })
+</script>

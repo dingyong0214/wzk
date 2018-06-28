@@ -1,0 +1,864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VoteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="VoteEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Duty" EntityType="VoteModel.Duty" />
+    <EntitySet Name="HouXuanRen" EntityType="VoteModel.HouXuanRen" />
+    <EntitySet Name="MenuButton" EntityType="VoteModel.MenuButton" />
+    <EntitySet Name="Menus" EntityType="VoteModel.Menus" />
+    <EntitySet Name="Role" EntityType="VoteModel.Role" />
+    <EntitySet Name="UserAdmin" EntityType="VoteModel.UserAdmin" />
+    <EntitySet Name="VerifyCode" EntityType="VoteModel.VerifyCode" />
+    <EntitySet Name="VoteDetail" EntityType="VoteModel.VoteDetail" />
+    <EntitySet Name="Member" EntityType="VoteModel.Member" />
+    <EntitySet Name="Login" EntityType="VoteModel.Login" />
+    <EntitySet Name="ElectionProcessDetail" EntityType="VoteModel.ElectionProcessDetail" />
+    <EntitySet Name="ZhangCheng" EntityType="VoteModel.ZhangCheng" />
+    <EntitySet Name="ZhangChengVote" EntityType="VoteModel.ZhangChengVote" />
+    <EntitySet Name="UserOperate" EntityType="VoteModel.UserOperate" />
+    <EntitySet Name="ElectionProcess" EntityType="VoteModel.ElectionProcess" />
+    <EntitySet Name="HouXuanRenData" EntityType="VoteModel.HouXuanRenData" />
+  </EntityContainer>
+  <EntityType Name="Duty">
+    <Documentation>
+      <Summary>职务表</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>职务名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertUser" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>录入时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="SortNo" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>排序号</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="HouXuanRen">
+    <Documentation>
+      <Summary>候选人</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MemberId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>会员编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DutyId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>候选职务编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ChooseTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>当选时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="IsDangXuan" Type="Boolean">
+      <Documentation>
+        <Summary>是否当选</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="XuHao" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>序号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertUser" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>录入时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Number" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>第几届</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="MenuButton">
+    <Documentation>
+      <Summary>菜单按钮</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MenuId" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>菜单编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>按钮名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Controller" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>控制器</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Action" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>Action</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>排序号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ButtonType" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>按钮类型：1-基本按钮 2-一般按钮</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InputUser" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>入库时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateUser" Type="Guid">
+      <Documentation>
+        <Summary>修改人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>更新时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Menus">
+    <Documentation>
+      <Summary>菜单</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ParentId" Type="Int32">
+      <Documentation>
+        <Summary>父级菜单</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>菜单名字</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="EnglishName" Type="String" MaxLength="32" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>菜单英文名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Url" Type="String" MaxLength="128" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>菜单Url</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MenuType" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>菜单类型：0-主菜单 1-子菜单</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>排序号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InputUser" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>入库时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateUser" Type="Guid">
+      <Documentation>
+        <Summary>修改人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>更新时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Role">
+    <Documentation>
+      <Summary>角色</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>角色名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ButtonIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>按钮权限</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>排序号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InputUser" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>入库时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateUser" Type="Guid">
+      <Documentation>
+        <Summary>修改人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>更新时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="UserAdmin">
+    <Documentation>
+      <Summary>后台管理用户</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>用户编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>用户名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>登录密码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Photo" Type="String" MaxLength="256" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>头像</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>姓名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="IdCard" Type="String" MaxLength="256" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>身份证号码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Department" Type="String" MaxLength="32" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>部门</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Mobile" Type="String" MaxLength="128" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>手机</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>联系电话</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>邮箱</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RegisterTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>注册时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="State" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>用户状态：1-有效 2-禁用 3-删除</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>用户拥有角色</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InputUser" Type="Guid">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateUser" Type="Guid">
+      <Documentation>
+        <Summary>修改人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="UpdateTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>修改时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="VerifyCode">
+    <Documentation>
+      <Summary>验证码</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="PhoneNo" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>手机</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>手机验证码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="SendTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>验证码发送时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ValidTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>有效时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ValidTimeLen" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>有效时长（秒）</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="VerifyTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>验证时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="VerifyFlag" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>验证标志：0-待验证 1-验证成功 2-验证失败 3-超时失效</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="BussinessType" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>业务类型：0-注册 1-修改登录密码 2-修改支付密码 3-忘记登录密码 4-忘记支付密码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Channel" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>激活渠道：0-网站 1-微信 2-安卓 3-IOS 4-触屏版 5-管理后台 6-支付宝</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CodeType" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>验证码类型：0-短信 1-语音 2-邮箱</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="IP" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>IP</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Way" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>短信通道：1-创蓝 2-云通讯</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="VerifyNum" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>验证次数</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="VoteDetail">
+    <Documentation>
+      <Summary>投票明细</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MemberId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>投票人编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Result" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>结果：0-反对 1-赞成 2-弃权</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="VoteTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>投票时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="HouXuanId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>候选编号</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Member">
+    <Documentation>
+      <Summary>会员表</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>会员编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MemberNo" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>会员序号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Mobile" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>手机号码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>密码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>姓名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Sex" Type="String" MaxLength="8" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>性别</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Introduction" Type="String" MaxLength="512" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>简介</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Company" Type="String" MaxLength="64" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>公司名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Duty" Type="String" MaxLength="64" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>职务</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="HomeAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>住址</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="WorkAddress" Type="String" MaxLength="64" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>工作地</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="JiGuan" Type="String" MaxLength="64" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>籍贯</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="CompanyAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>公司地址</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MainBusiness" Type="String" MaxLength="256" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>主营业务</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="IdCard" Type="String" MaxLength="256" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>身份证号码</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="JoinTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>入会时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="TuiJianUserId" Type="Guid">
+      <Documentation>
+        <Summary>推荐人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="TuiJianTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>推荐时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="State" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>状态：1-正常 2-禁用 3-删除 4-未交费</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="GetuiAndroidId" Type="String" MaxLength="64" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>个推AndroidId</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="GetuiIosId" Type="String" MaxLength="64" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>个推IosId</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="Login">
+    <Documentation>
+      <Summary>登录表</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MemberId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>会员编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>登录时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="ElectionProcessDetail">
+    <Documentation>
+      <Summary>选举流程明细</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ProcessId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>流程编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DutyId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>职务编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertUser" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>录入时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="SortNo" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>排序号</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="ZhangCheng">
+    <Documentation>
+      <Summary>章程记录</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertUser" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>录入时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="XuHao" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>序号</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="ZhangChengVote">
+    <Documentation>
+      <Summary>章程投票明细</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MemberId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>投票人编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ZhangChengId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>章程编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Result" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>结果：0-反对 1-赞成 2-弃权</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="VoteTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>投票时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="UserOperate">
+    <Documentation>
+      <Summary>会员操作记录</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MemberId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>会员编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ProcessDetailId" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>流程步骤明细编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>录入时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="ElectionProcess">
+    <Documentation>
+      <Summary>选举流程</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Step" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>步骤</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="StepName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>流程名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ContentFlag" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>内容标志：0-章程 1-会员</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="State" Type="Int32" Nullable="false">
+      <Documentation>
+        <Summary>状态：0-未开始 1-正在开始 2-已结束</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertUser" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3">
+      <Documentation>
+        <Summary>录入时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+  <EntityType Name="HouXuanRenData">
+    <Documentation>
+      <Summary>候选人导入数据格式</Summary>
+    </Documentation>
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false">
+      <Documentation>
+        <Summary>编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ChooseDuty" Type="String" MaxLength="64" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>竞选职位名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="XuHao" Type="Int32">
+      <Documentation>
+        <Summary>序号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Company" Type="String" MaxLength="64" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>公司名称</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false">
+      <Documentation>
+        <Summary>姓名</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Duty" Type="String" MaxLength="64" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>职务</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="MemberId" Type="Guid">
+      <Documentation>
+        <Summary>会员编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="DutyId" Type="Guid">
+      <Documentation>
+        <Summary>候选职务编号</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="Number" Type="Int32">
+      <Documentation>
+        <Summary>第几届</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="ChooseTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>当选时间</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="IsDangXuan" Type="Boolean">
+      <Documentation>
+        <Summary>是否当选</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertUser" Type="Guid">
+      <Documentation>
+        <Summary>录入人</Summary>
+      </Documentation>
+    </Property>
+    <Property Name="InsertTime" Type="DateTime" Precision="3">
+      <Documentation>
+        <Summary>录入时间</Summary>
+      </Documentation>
+    </Property>
+  </EntityType>
+</Schema>

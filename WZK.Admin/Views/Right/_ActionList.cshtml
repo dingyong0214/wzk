@@ -1,0 +1,83 @@
+﻿@{
+    Layout = null;
+}
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w15">所属菜单</th>
+                <th>功能名</th>
+                <th>控制器</th>
+                <th>方法</th>
+                <th>排序</th>
+                <th>录入人</th>
+                <th>录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+          @if (ViewBag.Count == 0)
+          {
+            <tr class="gradeA">
+                <td colspan="8">未查询到功能数据</td>
+            </tr>
+          }
+          else
+          { 
+              foreach (WZK.Business.Admin.Models.MMenuButton item in ViewBag.List.ReturnList)
+              {
+                <tr class="gradeA">
+                    <td>@item.MenuName</td>
+                    <td>@item.Name</td>
+                    <td style="max-width:200px; overflow:hidden;">@item.Controller</td>
+                    <td style="max-width:200px; overflow:hidden;">@item.Action</td>
+                    <td >@item.OrderNo</td>
+                    <td>@item.InputUser</td>
+                    <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td>
+                        <div class="xc_wrap">
+                            @if (RightInfo.GetRightInfo().CanUse("Right", "ActionDetail"))
+                            {
+                                @Html.ActionLink("查看", "ActionDetail", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                            }
+                            @if (RightInfo.GetRightInfo().CanUse("Right", "DelAction"))
+                            {
+                                <a href="javascript:;" data-id="@item.Id" data-button="@item.Name" data-menuname="@item.MenuName" class="btn btn-danger xc btn-del btn-mini">删除</a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+              }
+          }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+ <div class="pagination page">
+    @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+</div>
+}
+<script type="text/javascript">
+    $(function () {
+        $(".btn-del").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            var menuName = $this.data("menuname");
+            var button = $this.data("button");
+            layer.confirm('确认要删除菜单<span class="deltc">“' + menuName + '”</span>的按钮<span class="deltc">“' + button + '”</span>吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DelAction")', { menuButtonId: id }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg("保存成功", { time: 1000, icon: 1 }, function () {
+                            $this.parents("tr").remove();
+                        });
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    })
+</script>

@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "云控管理-手机管理-批量修改";
+    Layout = null;
+}
+<style>
+    .wid20{width:20% !important;float:left;text-align:right;margin-right:5px;margin-top:4px}
+</style>
+<div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content  border-top">
+                            @if (ViewBag.isAll == true)
+                            {
+                                <div class="control-group">
+                                    <label class="control-label wid20">当前手机型号：</label>
+                                    <div class="controls">
+                                        @Html.DropDownList("ddCurrMobileType", ViewBag.MobileTypes as List<SelectListItem>)
+                                    </div>
+                                </div>
+                            }
+                            <div class="control-group">
+                                <label class="control-label wid20">@(ViewBag.isAll? "手机型号修改为" : "手机型号") ：</label>
+                                <div class="controls">
+                                    @Html.DropDownList("ddMobileType", ViewBag.MobileTypes as List<SelectListItem>)
+                                </div>
+                            </div>
+                                @if (ViewBag.isAll == true)
+                                {
+                                  <div class="control-group">
+                                    <label class="control-label wid20">当前所在机房：</label>
+                                    <div class="controls">
+                                        @Html.DropDownList("ddCurrIDC", ViewBag.IDCS as List<SelectListItem>)
+                                    </div>
+                                  </div>
+                                }
+                            <div class="control-group">
+                                <label class="control-label wid20">@(ViewBag.isAll ? "所在机房修改为" : "所在机房") ：</label>
+                                <div class="controls">
+                                    @Html.DropDownList("ddIDC", ViewBag.IDCS as List<SelectListItem>)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label wid20">所在位置：</label>
+                                <div class="controls">
+                                    @Html.TextBox("Position")
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label wid20">是否激活：</label>
+                                <div class="controls">
+                                    @Html.DropDownList("IsActive", ViewBag.ddIsActive as List<SelectListItem>)
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w25">脚本名称</th>
+                <th class="w10">适配App</th>
+                <th class="w15">适配手机型号</th>
+                <th class="w12">适配分辨率</th>
+                <th class="w10">录入人</th>
+                <th class="w18">录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="7">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                foreach (WZK.Models.admin.MScript item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td>@item.ScriptName</td>
+                        <td>@item.APPName</td>
+                        <td>@item.MobileTypeName</td>
+                        <td>@item.DPI</td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                <a href="javascript:;" data-id="@item.Id" data-name="@item.ScriptName" class="btn btn-info xc btn-mini js-choice">选择</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}

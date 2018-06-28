@@ -1,0 +1,66 @@
+﻿@model WZK.Admin.Models.Right.ModifyRoleInfo
+
+@{
+    ViewBag.Title = "权限管理-角色管理-"+ViewBag.name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">权限管理</a>
+            <a href="@Url.Action("RoleList","Right")">角色管理</a>
+            <a href="javascript:;">@ViewBag.name</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                       @using (Ajax.BeginForm("ModifyRoleInfo", "Right", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success" }, new { @class = "form-horizontal" }))
+                        {
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>角色名：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.RoleName)
+                                    @Html.ValidationMessageFor(m => m.RoleName)
+                                    @Html.HiddenFor(m => m.RoleID)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">录入时间：</label>
+                                <div class="controls" >
+                                    <div class="sui-text">
+                                        @Html.ValueFor(m => m.InsertTime)
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("form").data("validator").settings.ignore = "";
+        });
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功", { time: 1000, icon: 1 }, function () {
+                    window.location.href = "/Right/RoleList";
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+            }
+        }
+    </script>
+}

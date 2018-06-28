@@ -1,0 +1,71 @@
+﻿@model WZK.Admin.ResetPwd
+
+@{
+    ViewBag.Title = "权限管理-后台用户-重置登录密码";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">权限管理</a>
+            <a href="@Url.Action("UserList","Right")">用户管理</a>
+            <a href="javascript:;">重置登录密码</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        @using (Ajax.BeginForm("ResetPwd", "Right", new AjaxOptions() { OnSuccess = "success", HttpMethod = "POST" }, new { @class = "form-horizontal" }))
+                        {
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>当前系统登录密码：</label>
+                                <div class="controls">
+                                    @Html.PasswordFor(m =>m.LoginPwd)
+                                    @Html.ValidationMessageFor(m => m.LoginPwd)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>新密码：</label>
+                                <div class="controls">
+                                    @Html.PasswordFor(m => m.NewPwd)
+                                    @Html.ValidationMessageFor(m => m.NewPwd)
+                                    <input type="hidden" name="Id" value="@ViewBag.Id" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">确认新密码：</label>
+                                <div class="controls">
+                                    @Html.PasswordFor(m => m.ConNewPwd)
+                                    @Html.ValidationMessageFor(m => m.ConNewPwd)
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功", { time: 1000, icon: 1 }, function () {
+                    window.location.href = "/Right/UserList";
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+                //layer.msg(data.Desc);
+            }
+        }
+    </script>
+ }

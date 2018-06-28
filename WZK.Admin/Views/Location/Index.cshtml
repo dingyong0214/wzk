@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "定位列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">云控管理</a>
+            <a href="javascript:;">定位管理</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content border-top">
+                        <div class="controls controls-row">
+                            <label class="span1 m-wrap search-label">标题</label>
+                            <input type="text" class="span2 m-wrap" value="" placeholder="请输入标题" id="name" />
+                            <label class="span1 m-wrap search-label">定位地址</label>
+                            <input type="text" class="span2 m-wrap" value="" placeholder="请输入定位地址" id="address" />
+                            <button class="span1 m-wrap  btn btn-success" type="button" id="btnSearch">查询</button>
+                            @if (WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Location", "ModifyLocationInfo"))
+                            {
+                                <button class="span1 m-wrap  btn btn-success" type="button" id="btnAdd">新增</button>
+                            }
+                            <input type="hidden" id="hdIndex" value="1" />
+                        </div>
+                    </div>
+                    <div id="container">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/Scripts/Page/showpage.js")
+    <script type="text/javascript">
+        $(function () {
+            //初始化列表数据
+            getPageData($("#hdIndex").val());
+            //搜索
+            $('#btnSearch').click(function (e) {
+                getPageData(1);
+            });
+            //新增
+            $('#btnAdd').click(function () {
+                location.href = "/Location/LocationDetail";
+            });
+        });
+        //获取分页数据
+        function getPageData(index) {
+            $.get("/Location/_Index/" + index + "?random=" + Math.random(), {
+                title: $("#name").val().trim(),
+                address: $("#address").val().trim()
+            }, function (data) {
+                $('#container').html(data);
+            });
+        }
+    </script>
+}
+
+
+
+

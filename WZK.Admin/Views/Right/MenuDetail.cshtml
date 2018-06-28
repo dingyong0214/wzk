@@ -1,0 +1,140 @@
+﻿@model WZK.Admin.Models.Right.ModifyMenuInfo
+@{
+    ViewBag.Title = "权限管理-菜单管理-" + ViewBag.name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    <style>
+        .row-fluid [class*="span"] {
+            margin-left: -0.1%;
+        }
+    </style>
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">权限管理</a>
+            <a href="@Url.Action("MenuList","Right")">菜单管理</a>
+            <a href="javascript:;">@ViewBag.name</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        @using (Ajax.BeginForm("ModifyMenuInfo", "Right", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success" }, new { @class = "form-horizontal" }))
+                        {
+                            <div class="control-group" style="padding-bottom:10px;">
+                                <label class="control-label">父级菜单：</label>
+                                <div class="controls">
+                                    @*@Html.DropDownListFor(m => m.ParentId, ViewBag.List as SelectList)*@
+                                    @if (Model.Id == 0)
+                                    {
+                                        Html.RenderPartial("~/Views/Shared/_RightMenu.cshtml");
+                                    }
+                                    else
+                                    {
+                                        ViewDataDictionary dict = new ViewDataDictionary();
+                                        dict.Add("menuId", Model.ParentId);
+                                        Html.RenderPartial("~/Views/Shared/_RightMenu.cshtml", dict);
+                                    }
+                                    @Html.HiddenFor(m => m.ParentId)
+                                    @Html.ValidationMessageFor(m => m.ParentId)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>菜单名：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Name)
+                                    @Html.ValidationMessageFor(m => m.Name)
+                                    @Html.HiddenFor(m => m.Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>英文名：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.EnglishName)
+                                    @Html.ValidationMessageFor(m => m.EnglishName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">地址：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Url)
+                                    @Html.ValidationMessageFor(m => m.Url)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">排序：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.OrderNo, new { maxlength = "3", style = "width:2%;" })
+                                    @Html.TextBoxFor(m => m.AllOrderNo, new { @readonly = "readonly", style = "width:11%;" })
+                                    @Html.ValidationMessageFor(m => m.OrderNo)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">菜单类型：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.MenuType, ViewBag.menu as List<SelectListItem>)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">录入时间：</label>
+                                <div class="controls">
+                                    <div class="sui-text">
+                                        @Html.ValueFor(m => m.InsertTime)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("form").data("validator").settings.ignore = "";
+            $(document).on('change', '[id^=parentCode]', function () { 
+                var itemId = $(this).val(); 
+                BindChange(itemId);
+            })
+
+            $(document).on('keyup', '#OrderNo', function () {
+                var orderNo = $.trim($(this).val());
+                var all = $("#AllOrderNo").val();
+                if (orderNo != "") {
+                    $("#AllOrderNo").val(all.substr(0, all.length - 3) + orderNo);
+                }
+            })
+        });
+        function BindChange(menuId) { 
+            var type = 2;//1.菜单按钮 2.菜单
+            $.get('@Url.Action("GetOrderNo")', { menuId: menuId, type: type }, function (data) {
+                if (data.IsPass == true) {
+                    $("#AllOrderNo").val(data.ReturnObject);
+                    $("input[name='OrderNo']").val(data.ReturnObject.substr(data.ReturnObject.length - 3, 3));
+                }
+            });
+        }
+
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功", { time: 1000, icon: 1 }, function () {
+                    window.location.href = "/Right/MenuList";
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+            }
+        }
+    </script>
+}

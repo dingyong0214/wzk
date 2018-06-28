@@ -1,0 +1,15 @@
+时间:2017-06-23 10:34:05.398 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0623_a2c8b39b730f80d92fb0c8fadeffc942","status":"successed_online"}
+时间:2017-06-23 10:37:43.159 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-06-23 10:37:43.235 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-06-23 10:37:43.347 
+级别:httpPost 
+信息:GETREQUESTSTREAM:36,RESPONSE: 112ms, {"result":"ok","taskId":"OSS-0623_02722b20167cb366fb63972ff4153097","status":"successed_online"}
+时间:2017-06-23 10:37:43.348 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0623_02722b20167cb366fb63972ff4153097","status":"successed_online"}

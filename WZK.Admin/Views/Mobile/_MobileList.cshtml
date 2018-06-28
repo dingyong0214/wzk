@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    input[type=checkbox] {
+        vertical-align: top;
+    }
+</style>
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w8"><input type="checkbox" id="mcheckAll" />&nbsp;全选</th>
+                <th class="w15">手机名称</th>
+                <th class="w12">手机号码</th>
+                <th class="w10">手机型号</th>
+                <th class="w15">所在机房</th>
+                <th class="w10">分辨率</th>
+                <th class="w20">录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="8">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                foreach (WZK.Models.admin.MTaskMobile item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td><input type="checkbox" class="js-mcheckbox" value="@item.Id" /></td>
+                        <td>@item.MobileName</td>
+                        <td>@item.MobileNo</td>
+                        <td>@item.MobileTypeName</td>
+                        <td>@item.IDC</td>
+                        <td>@item.DPI</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                <a href="javascript:;" data-id="@item.Id" class="btn btn-info xc btn-mini js-btnAdd">选择</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize, WZK.Common.ConfigData.PageConfig.PageSize, "m-container")
+    </div>
+}

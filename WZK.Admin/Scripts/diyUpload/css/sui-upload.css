@@ -1,0 +1,85 @@
+﻿@charset "utf-8";
+/* CSS Document*/
+ .img-box{width:535px;text-align:left;}
+ #img-container{margin:0 !important;}
+.parentFileBox {
+	width:auto;
+	height:auto;
+	overflow:hidden;
+	position:relative;
+}
+.parentFileBox>.fileBoxUl {
+	position:relative;
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	padding-bottom:5px;
+    padding-left:0;
+    margin:0;
+}
+.parentFileBox>.fileBoxUl>li {
+	float:left;
+	border:1px solid #09F;
+	border-radius:5px;
+	width:170px;
+	height:170px;
+	margin-top:5px;
+	margin-right:5px;
+	overflow:hidden;
+	position:relative;
+	background-color:#099;
+}
+.parentFileBox>.fileBoxUl>li>.viewThumb {
+	position:absolute;
+	top:0;
+	left:0;
+	width:170px;
+	height:170px;
+	overflow:hidden;
+    text-align:center;
+    background-origin:content;
+    background-position:50% 50%;
+    background-size:100% auto;
+    background-repeat:no-repeat; 
+}
+.parentFileBox>.fileBoxUl>li>.viewThumb>img {
+	height:100%;
+   
+    width:auto !important;
+}
+.parentFileBox>.fileBoxUl>li>.diyCancel,.parentFileBox>.fileBoxUl>li>.diySuccess {
+	position:absolute;
+	width:32px;
+	height:32px;
+	top:2px;
+	right:2px;
+	cursor:pointer;
+	display:none;
+}
+.parentFileBox>.fileBoxUl>li>.diyCancel {
+	background:url(../images/x_alt.png) no-repeat;
+}
+.parentFileBox>.fileBoxUl>li:hover {
+	-moz-box-shadow: 3px 3px 4px rgba(0,0,0,.4);
+	-webkit-box-shadow: 3px 3px 4px rgba(0,0,0,.4);
+	box-shadow: 3px 3px 4px rgba(0,0,0,.4);
+}
+.parentFileBox>.fileBoxUl>.diyUploadHover:hover .diyCancel {
+	display:block;
+}
+.upload_file input {
+    font-size: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index:10;
+}
+.upload_file {
+    color: #fff;
+    line-height: 25px;
+    text-indent: 0;
+    position:relative;
+    padding-left:8px;
+    padding-right:8px;
+}

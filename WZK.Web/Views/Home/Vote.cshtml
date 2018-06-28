@@ -1,0 +1,149 @@
+﻿@using WZK.Entity;
+@{
+    Layout = null;
+    var Param= ViewBag.Param as Tuple<int, Guid, Guid, string>;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title></title>
+    <link href="/skin/css/mui.min.css" rel="stylesheet" />
+    <style>
+        .mui-content {padding-bottom: 50px;  }
+        .logo{margin: 30px auto; display: block; width: 160px;}
+        .name { padding: 15px 20px !important; height: auto !important; }
+        .mui-input-row input[type=radio] { margin-top: 4px;  }
+        .mui-input-row label{font-family: "微软雅黑"; font-size: 14px !important;  width: 160px !important; }
+        .mui-radio {  width: 33.3333% !important; float: left !important;  display: inline !important;  }
+        .flex-box {display: flex;display: -webkit-flex;display: -webkit-box;  }
+        .flex-box .mui-input-row:after { height: 0 !important; }
+        .mui-btn-block { position: fixed;bottom: 0;margin: 0 !important; border-radius: 0; z-index: 888;}
+    </style>
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">@Param.Item4</h1>
+    </header>
+    <button class="mui-btn mui-btn-primary mui-btn-block" id="btnSubmit" data="@Param.Item2" data-flag="@Param.Item1">投票</button>
+    <div class="mui-content">
+        <img src="/skin/img/1.png" class="logo" />
+        @if (Param.Item1 == 0)
+        {
+            int i=0;
+            foreach (ZhangCheng item in ViewBag.List.ReturnList)
+            {
+                i++;
+                <div class="mui-card">
+                    <form class="mui-input-group">
+                        <div class="mui-input-row name ">
+                            @item.Name
+                        </div>
+                        <div class="flex-box">
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>赞成</label>
+                                <input name="radio@(i)" type="radio" value="1" data="@item.Id" checked="checked">
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>反对</label>
+                                <input name="radio@(i)" type="radio" value="0" data="@item.Id">
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>弃权</label>
+                                <input name="radio@(i)" type="radio" value="2" data="@item.Id">
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            }
+        }
+        else
+        {
+            int i = 0;
+            foreach (Candidate item in ViewBag.List.ReturnList)
+            {
+                i++;
+                <div class="mui-card">
+                    <form class="mui-input-group">
+                        <div class="mui-input-row name ">
+                            @(item.MemberName+" ("+item.Company+")")
+                        </div>
+                        <div class="flex-box">
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>赞成</label>
+                                <input name="radio@(i)" type="radio" value="1" data="@item.Id" checked="checked">
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>反对</label>
+                                <input name="radio@(i)" type="radio" value="0" data="@item.Id">
+                            </div>
+                            <div class="mui-input-row mui-radio mui-left">
+                                <label>弃权</label>
+                                <input name="radio@(i)" type="radio" value="2" data="@item.Id">
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            }
+        }
+    </div>
+    <script type="text/javascript" src="/skin/js/mui.min.js"></script>
+    <script>
+        var btnSubmit = document.getElementById("btnSubmit");
+        btnSubmit.addEventListener('tap', function () {
+            btnSubmit.setAttribute('disabled', 'disabled');
+            btnSubmit.innerText = '正在提交,请稍候...';
+            var param = '';
+            var cboxArray = [].slice.call(document.querySelectorAll(".flex-box"));
+            cboxArray.forEach(function ($this, index) {
+                var elem = $this.querySelector('input[type=radio]:checked');
+                param += elem.getAttribute('data') + "," + elem.value + "^";
+            });
+            param = param.substring(0, param.length - 1);
+            mui.ajax('/Home/Vote', {
+                type: "post",
+                timeout: 20000,
+                data: {
+                    param: param,
+                    flag: btnSubmit.getAttribute('data-flag'),
+                    processDetailId: btnSubmit.getAttribute('data')
+                },
+                success: function (data) {
+                    var IsPass = data.IsPass;
+                    if (IsPass) {
+
+                        var ErrorMsg = data.ErrorMsg;
+                        if (ErrorMsg == "true") {
+                            mui.alert("您已投票成功，进行下一项投票", "", "确定", function () {
+                                location.href = "@Url.Action("Vote")";
+                            });
+
+                        } else {
+                            mui.alert("您已投票成功", "", "确定", function () {
+                              location.href = "@Url.Action("VoteResult",new{id= Param.Item3 })";
+                            });
+
+                        }
+                    } else {
+                        mui.alert(data.Desc);
+                        btnSubmit.innerText = '投票';
+                        btnSubmit.removeAttribute('disabled');
+                    }
+                },
+                error: function (xhr, type, errorThrown) {
+                    mui.alert('无法连接到服务器，请检查网络设置');
+                    btnSubmit.innerText = '投票';
+                    btnSubmit.removeAttribute('disabled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

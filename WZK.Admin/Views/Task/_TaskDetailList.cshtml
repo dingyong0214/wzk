@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    input[type=checkbox] {
+        vertical-align: top;
+    }
+</style>
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w5"><input type="checkbox" id="checkAll" />&nbsp;全选</th>
+                <th class="w15">任务名称</th>
+                <th class="w10">手机号码</th>
+                <th class="w10">手机型号</th>
+                <th class="w8">DPI</th>
+                <th class="w10">已执行次数</th>
+                <th class="w10">执行结束时间</th>
+                <th class="w6">状态</th>
+                <th class="w7">录入人</th>
+                <th class="w12">录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="11">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                var ck = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Task", "DelTaskDetail");
+                foreach (WZK.Models.admin.MTaskDetail item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td><input type="checkbox" class="js-checkbox" value="@item.Id" /></td>
+                        <td>@item.TaskName</td>
+                        <td>@item.MobileNo</td>
+                        <td>@item.MobileTypeName</td>
+                        <td>@item.DPI</td>
+                        <td>@item.ExecutedTimes</td>
+                        <td>@(item.EndTime != null? item.EndTime.Value.ToString("yyyy-MM-dd HH:mm:ss"):"")</td>
+                        <td>@EnumTool.GetDesc((ETaskState)item.State)</td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (ck)
+                                {
+                                  <button class="btn btn-danger xc btn-del btn-mini  js-singerDel" type="button" data-id="@item.Id" data-name="@item.MobileNo" >删除</button>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        $(".js-singerDel").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            var name = $this.data("name");
+            layer.confirm('确认要删除任务手机<span class="deltc">“' + name + '”</span>吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DelTaskDetail")', { id: id, taskId:'@ViewBag.taskId' }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg('删除成功', { icon: 1, time: 1000 }, function () {
+                            location.reload(true);
+                        });
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    })
+</script>

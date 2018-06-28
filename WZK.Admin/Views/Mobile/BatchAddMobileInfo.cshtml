@@ -1,0 +1,148 @@
+﻿@model WZK.Admin.Models.Mobile.BatchMobileInfo
+@{
+    ViewBag.Title = "云控管理-手机管理-批量新增";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .control-group:first-child{padding:15px 100px;}.control-group span.mobile{margin-bottom:3px;}.control-group .icon:hover{cursor:pointer;color:red;}#mobileContainer{display:none}
+</style>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">云控管理</a>
+            <a href="@Url.Action("Index","Mobile")">手机管理</a>
+            <a href="javascript:;">批量新增</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        @using (Ajax.BeginForm("InsertIntoMobile", "Mobile", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success" }, new { @class = "form-horizontal" }))
+                        {
+                            <div class="control-group" id="mobileContainer">  
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>手机号码：</label>
+                                <div class="controls">
+                                    <input  type="text" id="txtMobile" value=""/>
+                                    <input type="button" value="添加" class="btn btn-info"  id="btnAdd"/>
+                                    <span>多台手机需多次添加</span>
+                                    @Html.HiddenFor(m => m.Param)
+                                    @Html.ValidationMessageFor(m => m.Param)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>手机名称：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.MobileName)
+                                    @Html.ValidationMessageFor(m => m.MobileName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>手机型号：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.MobileType, ViewBag.MobileTypes as List<SelectListItem>)
+                                    @Html.ValidationMessageFor(m => m.MobileType)
+                                    @Html.HiddenFor(m => m.MobileTypeName)
+                                    @Html.HiddenFor(m=>m.DPI)
+                                    @Html.HiddenFor(m => m.GuidEmpty)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>所在机房：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.IDC, ViewBag.IDCS as List<SelectListItem>)
+                                    @Html.ValidationMessageFor(m => m.IDC)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>所在位置：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Position)
+                                    @Html.ValidationMessageFor(m => m.Position)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">是否激活：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.IsActive, ViewBag.ddIsActive as List<SelectListItem>)
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        function handMobile() {
+            var mArr = $(".badge-success");
+            if (mArr.length) {
+                var mobileInfo = '';
+                cbox.each(function () {
+                    alert($(this).text());
+                    mobileInfo += $(this).text() + '^';
+                });
+                mobileInfo = mobileInfo.substring(0, mobileInfo.length - 1);
+                $("#Param").val(mobileInfo);
+            }
+        }
+        $(function () {
+            var tempArr=[];
+            $("form").data("validator").settings.ignore = "";
+            $("#MobileType").change(function () {
+                var $this = $(this);
+                if ($this.val() !== "@Guid.Empty") {
+                    var mttxt = $(this).find("option:selected").text();
+                    $("#MobileTypeName").val(mttxt.split('(')[0].trim());
+                    $("#DPI").val(mttxt.split('(')[1].replace(")", "").trim());
+                }
+            });
+            $("#btnAdd").click(function () {
+                var txtmobile = $("#txtMobile").val().trim();
+                if (txtmobile=='') {
+                    layer.tips('请输入手机号码', '#btnAdd');
+                    return;
+                }else if (!txtmobile.isMobile()) {
+                    layer.tips('请输入正确的手机号码', '#btnAdd');
+                    return;
+                } else if ($.inArray(txtmobile, tempArr) != -1) {
+                    layer.tips('该手机号码已添加', '#btnAdd');
+                    return;
+                }
+                tempArr.push(txtmobile);
+                $("#Param").val(tempArr.join("^"));
+                $("#mobileContainer").append(' <span class="mobile badge badge-success"> ' + txtmobile + ' <span class="icon js-icon"> <i class="icon-remove"></i></span> </span>');
+                $("#mobileContainer").show();
+            });
+            $("#mobileContainer").on("click",".js-icon",function () {
+                var txt = $(this).parent().text();
+                tempArr.splice($.inArray(txt, tempArr), 1);
+                $("#Param").val(tempArr.join("^"));
+                $(this).parent().remove();
+                if ($(".badge-success").length == 0) {
+                    $("#mobileContainer").hide();
+                }
+            });
+        });
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功", { time: 1000,icon:1}, function () {
+                    window.location.href = "/Mobile/Index";
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+            }
+        }
+    </script>
+}

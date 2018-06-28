@@ -1,0 +1,94 @@
+﻿@{
+    Layout = null;
+}
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w10">用户名</th>
+                <th>姓名</th>
+                <th>部门</th>
+                <th>角色</th>
+                <th>录入时间</th>
+                <th>录入人</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="8">未查询到用户数据</td>
+                </tr>
+            }
+            else
+            {
+                var ck = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Right", "UserDetail");
+                var cz = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Right", "ResetPwd");
+                var sz = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Right", "SetUserRole");
+                var qy = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Right", "SetUserQuYu");
+                foreach (WZK.Business.Admin.MUserAdmin item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td>@item.UserName</td>
+                        <td>@item.Name</td>
+                        <td>@item.Department</td>
+                        <td>@item.RoleName</td>
+                        <td>@item.RegisterTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>@item.InputUser</td>
+                        <td>@EnumTool.GetDesc((WZK.Business.Admin.Enum.EUserAdminStatus)item.State)</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (ck)
+                                {
+                                    @Html.ActionLink("查看", "UserDetail", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+                                @if (cz)
+                                {
+                                    @Html.ActionLink("重置密码", "ResetPwd", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+                                @if (sz)
+                                {
+                                    @Html.ActionLink("设置角色", "SetUserRole", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+                                @if (RightInfo.GetRightInfo().CanUse("Right", "DelUser") && item.State != (int)WZK.Business.Admin.Enum.EUserAdminStatus.Del && new WZK.Common.Authentication.Impl.FormsAuthenticationService<WZK.Common.Authentication.AuthUser>().GetSiginUser().Id != item.Id)
+                                {
+                                    <a href="javascript:;" data-id="@item.Id" data-name="@item.UserName" class="btn btn-danger xc btn-del btn-mini">删除</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        $(".btn-del").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            var name = $this.data("name");
+            layer.confirm('确认要删除用户<span class="deltc">“' + name + '”</span>吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DelUser")', { userId: id }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg('删除成功', { icon: 1, time: 1000 }, function () {
+                            location.reload(true);
+                        });
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    })
+</script>

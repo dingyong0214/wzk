@@ -1,0 +1,202 @@
+﻿@{
+    ViewBag.Title = "首页";
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">首页</a>
+            <a href="javascript:;">任务统计</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row-fluid">
+            <div class="span6">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-signal"></i> </span>
+                        <h5>任务数量统计</h5>
+                    </div>
+                    <div class="widget-content">
+                        <div class="pie" id="pieChart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="span6">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <span class="icon"> <i class="icon-signal"></i> </span>
+                        <h5>任务手机执行情况</h5>
+                    </div>
+                    <div class="widget-content">
+                        <div class="bars" id="barChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/Scripts/bootstrap/echarts.min.js")
+     <script type="text/javascript">
+         $(function () {
+             $.post('@Url.Action("_Index")', {}, function (data) {
+                 if (data.IsPass == true) {
+                     var  option = {
+                         title: {
+                             text: '任务数量统计',
+                             subtext: '任务总数:'+data.ReturnObject.TotalCount,
+                             x: 'center'
+                         },
+                         tooltip: {
+                             trigger: 'item',
+                             formatter: "{a} <br/>{b} : {c} ({d}%)"
+                         },
+                         legend: {
+                             orient: 'vertical',
+                             left: 'left',
+                             data: ['执行脚本', '自动回复', '发朋友圈', '定位']
+                         },
+                         series: [
+                             {
+                                 name: '任务类型',
+                                 type: 'pie',
+                                 radius: '55%',
+                                 center: ['50%', '60%'],
+                                 data: [
+                                     { value: data.ReturnObject.ScriptNum, name: '执行脚本' },
+                                     { value: data.ReturnObject.AutoReplyNum, name: '自动回复' },
+                                     { value: data.ReturnObject.MomentsNum, name: '发朋友圈' },
+                                     { value: data.ReturnObject.LocationNum, name: '定位' }
+                                 ],
+                                 itemStyle: {
+                                     emphasis: {
+                                         shadowBlur: 10,
+                                         shadowOffsetX: 0,
+                                         shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                     }
+                                 }
+                             }
+                         ]
+                     };
+                     var pieChart = echarts.init(document.getElementById("pieChart"));
+                     pieChart.setOption(option);
+
+                     //执行情况
+                     var stateCount = 5;
+                     var typeCount =data.ReturnList.length;
+                     var ETaskType = ['执行脚本', ' 自动回复', ' 发朋友圈', ' 定位'];
+                     var xAxisData = [];
+                     var customData = [];
+                     var legendData = ['trend','新任务','已接受','开始执行','已完成','执行失败'];
+                     var dataList = [];
+
+                     var encodeY = [];
+                     for (var i = 0; i < stateCount; i++) {
+                         dataList.push([]);
+                         encodeY.push(1 + i);
+                     }
+                     for (var i = 0; i < typeCount;i++) {
+                         var customVal = [i];
+                         customData.push(customVal);
+                         xAxisData.push(ETaskType[data.ReturnList[i].TaskType - 1]);
+                         var NumArr = [data.ReturnList[i].NewTaskNum, data.ReturnList[i].AcceptNum, data.ReturnList[i].ExecuteNum, data.ReturnList[i].CompleteNum, data.ReturnList[i].FailNum];
+                         for (var j = 0; j < dataList.length; j++) {
+                             //1.执行脚本 2.自动回复 3.发朋友圈 4.定位
+                             //：0-新任务，1-已接受，2-开始执行，3-已完成，4-执行失败
+                             dataList[j].push(NumArr[j]);
+                             customVal.push(NumArr[j]);
+                         }
+                     }
+                     function renderItem(params, api) {
+                         var xValue = api.value(0);
+                         var currentSeriesIndices = api.currentSeriesIndices();
+                         var barLayout = api.barLayout({
+                             barGap: '30%', barCategoryGap: '20%', count: currentSeriesIndices.length - 1
+                         });
+
+                         var points = [];
+                         for (var i = 0; i < currentSeriesIndices.length; i++) {
+                             var seriesIndex = currentSeriesIndices[i];
+                             if (seriesIndex !== params.seriesIndex) {
+                                 var point = api.coord([xValue, api.value(seriesIndex)]);
+                                 point[0] += barLayout[i - 1].offsetCenter;
+                                 point[1] -= 20;
+                                 points.push(point);
+                             }
+                         }
+                         var style = api.style({
+                             stroke: api.visual('color'),
+                             fill: null
+                         });
+
+                         return {
+                             type: 'polyline',
+                             shape: {
+                                 points: points
+                             },
+                             style: style
+                         };
+                     }
+
+                     barOption = {
+                         tooltip: {
+                             trigger: 'axis'
+                         },
+                         legend: {
+                             data: legendData,
+                         },
+                         color:['#63b6fc','#2f4554', '#61a0a8', '#d48265', '#28b779','#ff0000',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'],
+                         dataZoom: [{
+                             type: 'slider',
+                             start: 0,
+                             end: 280
+                         }, {
+                             type: 'inside',
+                             start: 0,
+                             end: 280
+                         }],
+                         xAxis: {
+                             data: xAxisData
+                         },
+                         yAxis: {},
+                         series: [{
+                             type: 'custom',
+                             name: 'trend',
+                             renderItem: renderItem,
+                             itemStyle: {
+                                 normal: {
+                                     borderWidth: 2
+                                 }
+                             },
+                             encode: {
+                                 x: 0,
+                                 y: encodeY
+                             },
+                             data: customData,
+                             z: 100
+                         }].concat(echarts.util.map(dataList, function (data, index) {
+                             return {
+                                 type: 'bar',
+                                 animation: false,
+                                 name: legendData[index + 1],
+                                 itemStyle: {
+                                     normal: {
+                                         opacity: 0.5
+                                     }
+                                 },
+                                 data: data
+                             };
+                         }))
+                     };
+
+
+                     var barChart = echarts.init(document.getElementById("barChart"));
+                     barChart.setOption(barOption);
+                 } else {
+                     layer.msg('数据初始化失败：' + data.msg, { icon: 2 });
+                 }
+             });
+         });
+ </script>}

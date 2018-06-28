@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    .img-margin {
+        margin-right: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    th, td, tr {
+        word-break: break-all;
+    }
+</style>
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w20">标题</th>
+                <th class="w12">经度</th>
+                <th class="w12">纬度</th>
+                <th class="w25">经纬度</th>
+                <th class="w25">定位地址</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="6">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                foreach (WZK.Models.admin.MLocation item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td>@item.Title</td>
+                        <td>@item.Longitude </td>
+                        <td>@item.Latitude </td>
+                        <td>@item.LatAndLong </td>
+                        <td>@item.Address </td>
+                        <td>
+                            <div class="xc_wrap">
+                                <a href="javascript:;" data-id="@item.Id" data-name="@item.Title" class="btn btn-info xc btn-mini js-choice">选择</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}

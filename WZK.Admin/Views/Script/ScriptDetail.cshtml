@@ -1,0 +1,87 @@
+﻿@model WZK.Admin.Models.Script.ModifyScript
+@{
+    ViewBag.Title = "云控管理-脚本管理-" + @ViewBag.name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">云控管理</a>
+            <a href="@Url.Action("Index","Script")">脚本管理</a>
+            <a href="javascript:;">@ViewBag.name</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        @using (Ajax.BeginForm("ModifyScriptInfo", "Script", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success" }, new { @class = "form-horizontal" }))
+                        {
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>脚本名称：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.ScriptName)
+                                    @Html.ValidationMessageFor(m => m.ScriptName)
+                                    @Html.HiddenFor(m => m.Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>手机型号：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.MobileType, ViewBag.MobileTypes as List<SelectListItem>)
+                                    @Html.ValidationMessageFor(m => m.MobileType)
+                                    @Html.HiddenFor(m => m.DPI)
+                                    @Html.HiddenFor(m => m.GuidEmpty)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>适配App名称：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.APPName, ViewBag.AppList as List<SelectListItem>)
+                                    @Html.ValidationMessageFor(m => m.APPName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>脚本内容</label>
+                                <div class="controls">
+                                    @Html.TextAreaFor(m => m.ScriptContent, 20, 150, new { @style = "width:500px" })
+                                    @Html.ValidationMessageFor(m => m.ScriptContent)
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("form").data("validator").settings.ignore = "";
+            $("#MobileType").change(function () {
+                var $this = $(this);
+                if ($this.val() !== "@Guid.Empty") {
+                    $("#DPI").val($(this).find("option:selected").text().split('(')[1].replace(")", "").trim());
+                }
+            });
+        });
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功", { time: 1000,icon:1}, function () {
+                    window.location.href = "/Script/Index";
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+            }
+        }
+    </script>
+}

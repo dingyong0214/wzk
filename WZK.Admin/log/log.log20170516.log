@@ -1,0 +1,8 @@
+时间:2017-05-16 15:03:58.028 
+级别:Error 
+信息:WZK.Business.Admin.MobileManage.DelMobileInfo 批量删除手机Error：
+System.FormatException: GUID 应包含带 4 个短划线的 32 位数(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。
+   在 System.Guid.TryParseGuidWithDashes(String guidString, GuidResult& result)
+   在 System.Guid.TryParseGuid(String g, GuidStyles flags, GuidResult& result)
+   在 System.Guid.Parse(String input)
+   在 WZK.Business.Admin.MobileMgt.DelMobileInfo(String param, String roleName, Guid operUserId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\MobileMgt.cs:行号 433

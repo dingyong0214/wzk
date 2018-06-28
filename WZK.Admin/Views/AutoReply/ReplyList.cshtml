@@ -1,0 +1,46 @@
+﻿@{
+    Layout =null;
+}
+<div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content border-top">
+                        <div class="controls controls-row">
+                            <label class="span1 m-wrap search-label">模板名称</label>
+                            <input type="text" class="span2 m-wrap" value="" placeholder="请输入模板名称" id="name" />
+                            <button class="span1 m-wrap  btn btn-success" type="button" id="btnSearch">查询</button>
+                            <input type="hidden" id="hdIndex" value="1" />
+                        </div>
+                    </div>
+                    <div id="container">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    @Scripts.Render("~/Scripts/Page/showpage.js")
+    <script type="text/javascript">
+        $(function () {
+            //初始化列表数据
+            getPageData($("#hdIndex").val());
+            //搜索
+            $('#btnSearch').click(function (e) {
+                getPageData(1);
+            });
+        });
+        //获取分页数据
+        function getPageData(index) {
+            $.get("/AutoReply/_ReplyList/" + index + "?random=" + Math.random(), {
+                name: $("#name").val().trim()
+            }, function (data) {
+                $('#container').html(data);
+            });
+        }
+    </script>
+
+
+
+

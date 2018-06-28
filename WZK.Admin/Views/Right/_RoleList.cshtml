@@ -1,0 +1,80 @@
+﻿@{
+    Layout = null;
+}
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w15">角色</th>
+                <th>录入人</th>
+                <th>录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="3">未查询到角色数据</td>
+                </tr>
+            }
+            else
+            {
+                var ck = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Right", "RoleDetail");
+                var sz = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Right", "SetRoleRight");
+                foreach (WZK.Business.Admin.MRole item in ViewBag.List.ReturnList)
+                {
+                    <tr>
+                        <td>@item.RoleName</td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (ck)
+                                {
+                                    @Html.ActionLink("查看", "RoleDetail", new { item.RoleID }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+                                @if (sz)
+                                {
+                                    @Html.ActionLink("设置权限", "SetRoleRight", new { item.RoleID }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+                                @if (RightInfo.GetRightInfo().CanUse("Right", "DelRole"))
+                                {
+                                    <a href="javascript:;" data-id="@item.RoleID" data-name="@item.RoleName" class="btn btn-danger xc btn-del btn-mini">删除</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+   <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+  </div> 
+}
+<script type="text/javascript">
+    $(function () {
+        $(".btn-del").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            var name = $this.data("name"); 
+            layer.confirm('确认要删除角色<span class="deltc">“' + name + '”</span>吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DelRole")', { roleId: id }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg('删除成功', { icon: 1 });
+                        $this.parents("tr").remove();
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    })
+</script>

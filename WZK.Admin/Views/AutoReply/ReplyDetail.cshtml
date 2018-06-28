@@ -1,0 +1,140 @@
+﻿@model WZK.Admin.Models.AutoReply.ModifyReplyInfo
+@{
+    ViewBag.Title = "云控管理-自动回复-设置回复" + @ViewBag.name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    <style>
+        .upload_file input {
+            font-size: 0;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 10;
+        }
+
+        .upload_file {
+            color: #fff;
+            line-height: 25px;
+            text-indent: 0;
+            position: relative;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">云控管理</a>
+            <a href="@Url.Action("Index","AutoReply")">自动回复</a>
+            <a href="@Url.Action("AnswerList","AutoReply",new {id=Model.TemplateId })">设置回复</a>
+            <a href="javascript:;">@ViewBag.name</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        @using (Ajax.BeginForm("ModifyReply", "AutoReply", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success" }, new { @class = "form-horizontal" }))
+                        {
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>回复序号：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.AskNo)
+                                    @Html.ValidationMessageFor(m => m.AskNo)
+                                    @Html.HiddenFor(m => m.Id)
+                                    @Html.HiddenFor(m => m.TemplateId)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>问题：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Question)
+                                    @Html.ValidationMessageFor(m => m.Question)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>回复内容：</label>
+                                <div class="controls">
+                                    @Html.TextAreaFor(m => m.Answer, 10, 40, new { @style = "width:320px" })
+                                    @Html.ValidationMessageFor(m => m.Answer)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">图片：</label>
+                                <div class="controls">
+                                    <a data-lightbox="img_device" href="@Model.Pic" class="@(string.IsNullOrWhiteSpace(Model.Pic)?"hide":"")">
+                                        <img style="max-width:40px;max-height:40px;display:block;float:left;margin-right:10px;" src="@Model.Pic" />
+                                    </a>
+                                    <a class="upload_file btn btn-info">
+                                        选择图片
+                                        <input type="file" name="upload_file" id="upload_file" style="width:85px;">
+                                    </a>
+                                    @Html.HiddenFor(m => m.Pic)
+                                    <span>(图片不能超过4M)</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>图片序号：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.PicIndex)
+                                    <span> “-1” 表示未上传图片</span>
+                                    @Html.ValidationMessageFor(m => m.PicIndex)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>排序号：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.OrderNo)
+                                    <span> “1-2-3” 数字越大越靠后</span>
+                                    @Html.ValidationMessageFor(m => m.OrderNo)
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Styles.Render("~/Content/css/jquery-ui.css")
+@Styles.Render("~/Scripts/LightBox/css/lightbox.min.css")
+@section scripts{
+    @Scripts.Render("~/Scripts/jquery-ui.js", "~/Scripts/LightBox/js/lightbox.min.js")
+    <script type="text/javascript">
+        $(function () {
+            $("form").data("validator").settings.ignore = "";
+            //图片上传
+            $("#upload_file").change(function () {
+                uploadImg("upload_file", function (data) {
+                    if (data.url != "") {
+                        var elem = $("#upload_file").parent().prev();
+                        elem.attr("href", data.url).find("img:eq(0)").attr("src", data.url);
+                        elem.removeClass("hide");
+                        $("#@Html.IdFor(m=>m.Pic)").val(data.url);
+                    }
+                }, null, 3);
+            });
+        });
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功", { time: 1000,icon:1}, function () {
+                    window.location.href = "/AutoReply/AnswerList/@Model.TemplateId";
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+            }
+        }
+    </script>
+}

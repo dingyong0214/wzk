@@ -1,0 +1,855 @@
+时间:2017-05-26 10:47:51.237 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 10:47:51.409 
+级别:httpPost 
+信息:GETREQUESTSTREAM:63,RESPONSE: 141ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 10:47:51.754 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 10:47:51.879 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 110ms, {"result":"sign_error"}
+时间:2017-05-26 10:47:51.973 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 94ms, {"result":"success"}
+时间:2017-05-26 10:47:52.082 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 94ms, {"result":"ok","taskId":"OSS-0526_bb42fcdbf87b35bc4298836e1b9849dd","status":"successed_online"}
+时间:2017-05-26 10:47:52.082 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_bb42fcdbf87b35bc4298836e1b9849dd","status":"successed_online"}
+时间:2017-05-26 10:49:15.381 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 10:49:15.475 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 10:49:15.600 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 125ms, {"result":"ok","taskId":"OSS-0526_1e038a215d579edb2360789fae56ddc8","status":"successed_offline"}
+时间:2017-05-26 10:49:15.600 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_1e038a215d579edb2360789fae56ddc8","status":"successed_offline"}
+时间:2017-05-26 10:49:28.031 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 10:49:28.125 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 10:49:28.219 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 94ms, {"result":"ok","taskId":"OSS-0526_62865c2e0ec23fabb7ba98581d13fc5e","status":"successed_offline"}
+时间:2017-05-26 10:49:28.219 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_62865c2e0ec23fabb7ba98581d13fc5e","status":"successed_offline"}
+时间:2017-05-26 10:54:32.704 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 10:54:32.860 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 10:54:33.187 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 10:54:33.327 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","taskId":"OSS-0526_968dcdb33685e6dece660d111df3cbe2","status":"successed_offline"}
+时间:2017-05-26 10:54:33.327 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_968dcdb33685e6dece660d111df3cbe2","status":"successed_offline"}
+时间:2017-05-26 10:55:16.158 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 10:55:16.267 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 10:55:16.376 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 110ms, {"result":"ok","taskId":"OSS-0526_46d2ab20765da9f6e13d4d93d411250b","status":"successed_offline"}
+时间:2017-05-26 10:55:16.376 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_46d2ab20765da9f6e13d4d93d411250b","status":"successed_offline"}
+时间:2017-05-26 11:00:36.583 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:00:36.708 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:00:36.818 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_472cf3ff1e71c9b42c3b7450dafc4fea","status":"successed_online"}
+时间:2017-05-26 11:00:37.187 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_472cf3ff1e71c9b42c3b7450dafc4fea","status":"successed_online"}
+时间:2017-05-26 11:01:59.229 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:01:59.322 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:01:59.432 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_ee722543453295d1d64c0b77549249f2","status":"successed_online"}
+时间:2017-05-26 11:01:59.447 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_ee722543453295d1d64c0b77549249f2","status":"successed_online"}
+时间:2017-05-26 11:02:11.546 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:02:11.640 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:02:11.734 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 93ms, {"result":"ok","taskId":"OSS-0526_42feb9437ee48dce48a2ba3271382f6a","status":"successed_offline"}
+时间:2017-05-26 11:02:11.750 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_42feb9437ee48dce48a2ba3271382f6a","status":"successed_offline"}
+时间:2017-05-26 11:03:09.616 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:03:09.726 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:03:09.835 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 110ms, {"result":"ok","taskId":"OSS-0526_590ae11dc4ebf730054b91a1d5eaa2c3","status":"successed_online"}
+时间:2017-05-26 11:03:09.835 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_590ae11dc4ebf730054b91a1d5eaa2c3","status":"successed_online"}
+时间:2017-05-26 11:25:35.490 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:25:35.663 
+级别:httpPost 
+信息:GETREQUESTSTREAM:63,RESPONSE: 141ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 11:25:36.007 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:25:36.210 
+级别:httpPost 
+信息:GETREQUESTSTREAM:62,RESPONSE: 187ms, {"result":"ok","taskId":"OSS-0526_b38ddcd7ec6c42a05721b86d7c55ce66","status":"successed_online"}
+时间:2017-05-26 11:25:36.226 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_b38ddcd7ec6c42a05721b86d7c55ce66","status":"successed_online"}
+时间:2017-05-26 11:40:17.766 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:40:17.922 
+级别:httpPost 
+信息:GETREQUESTSTREAM:62,RESPONSE: 141ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 11:40:18.203 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:40:18.344 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_18c7c570ac052335bce3a574b2232c68","status":"successed_offline"}
+时间:2017-05-26 11:40:18.344 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_18c7c570ac052335bce3a574b2232c68","status":"successed_offline"}
+时间:2017-05-26 11:40:39.243 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:40:39.337 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:40:39.444 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 108ms, {"result":"ok","taskId":"OSS-0526_e087d7f1b84d257ebef2efcc829b9919","status":"successed_offline"}
+时间:2017-05-26 11:40:39.446 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_e087d7f1b84d257ebef2efcc829b9919","status":"successed_offline"}
+时间:2017-05-26 11:41:10.001 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:41:10.079 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:41:10.172 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 94ms, {"result":"ok","taskId":"OSS-0526_7419c1d23b4176952381df8eafea7035","status":"successed_online"}
+时间:2017-05-26 11:41:10.188 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_7419c1d23b4176952381df8eafea7035","status":"successed_online"}
+时间:2017-05-26 11:42:35.036 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:42:35.192 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 11:42:35.489 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:42:35.614 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_c66f3bd71465a8aa94f1b19f42a4c280","status":"successed_offline"}
+时间:2017-05-26 11:42:35.629 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_c66f3bd71465a8aa94f1b19f42a4c280","status":"successed_offline"}
+时间:2017-05-26 11:43:12.322 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:43:12.400 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:43:12.538 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 106ms, {"result":"ok","taskId":"OSS-0526_1a543caa9bf67fdd1d2114fbfa6ff537","status":"successed_offline"}
+时间:2017-05-26 11:43:12.538 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_1a543caa9bf67fdd1d2114fbfa6ff537","status":"successed_offline"}
+时间:2017-05-26 11:43:26.640 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:43:26.734 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:43:26.827 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 94ms, {"result":"ok","taskId":"OSS-0526_32fd883fdc08a33f3d2c807056387623","status":"successed_offline"}
+时间:2017-05-26 11:43:26.843 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_32fd883fdc08a33f3d2c807056387623","status":"successed_offline"}
+时间:2017-05-26 11:44:00.387 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 11:44:00.496 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 11:44:00.590 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 93ms, {"result":"ok","taskId":"OSS-0526_c0ade70b1e6510e5c66a5623b7dfdc6c","status":"successed_offline"}
+时间:2017-05-26 11:44:00.590 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_c0ade70b1e6510e5c66a5623b7dfdc6c","status":"successed_offline"}
+时间:2017-05-26 14:03:22.169 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:03:22.256 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:03:22.354 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 96ms, {"result":"ok","taskId":"OSS-0526_0d2ef2df7bd6a377e452633ce0e3eceb","status":"successed_online"}
+时间:2017-05-26 14:03:22.356 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_0d2ef2df7bd6a377e452633ce0e3eceb","status":"successed_online"}
+时间:2017-05-26 14:04:23.278 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:04:23.361 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:04:23.477 
+级别:httpPost 
+信息:GETREQUESTSTREAM:37,RESPONSE: 115ms, {"result":"ok","taskId":"OSS-0526_ae8d0a6c22c52bbb4dd3ec583212da08","status":"successed_offline"}
+时间:2017-05-26 14:04:23.478 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_ae8d0a6c22c52bbb4dd3ec583212da08","status":"successed_offline"}
+时间:2017-05-26 14:12:57.198 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:12:57.346 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 110ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 14:13:53.979 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:13:54.121 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 111ms, {"result":"ok","taskId":"OSS-0526_e4660404d2698eac04cd46d4122b7df4","status":"successed_online"}
+时间:2017-05-26 14:13:54.121 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_e4660404d2698eac04cd46d4122b7df4","status":"successed_online"}
+时间:2017-05-26 14:14:54.068 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:14:54.193 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:14:54.286 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 94ms, {"result":"ok","taskId":"OSS-0526_758e2d43a8f15332d34fd8cb03e9bf72","status":"successed_offline"}
+时间:2017-05-26 14:14:54.286 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_758e2d43a8f15332d34fd8cb03e9bf72","status":"successed_offline"}
+时间:2017-05-26 14:17:28.248 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:17:28.405 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 14:17:43.957 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:17:44.129 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","taskId":"OSS-0526_6037dca35d79fe688efb9b8a27c95f8e","status":"successed_online"}
+时间:2017-05-26 14:17:44.144 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_6037dca35d79fe688efb9b8a27c95f8e","status":"successed_online"}
+时间:2017-05-26 14:18:22.108 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:18:38.852 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:18:38.982 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 115ms, {"result":"ok","taskId":"OSS-0526_9981497e05a8ffcbfbc6789474c3d546","status":"successed_online"}
+时间:2017-05-26 14:18:38.982 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_9981497e05a8ffcbfbc6789474c3d546","status":"successed_online"}
+时间:2017-05-26 14:19:06.325 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:19:06.419 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:19:06.569 
+级别:httpPost 
+信息:GETREQUESTSTREAM:42,RESPONSE: 119ms, {"result":"ok","taskId":"OSS-0526_4711bffd1a761bc0bc290a46007f4553","status":"successed_offline"}
+时间:2017-05-26 14:19:06.569 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_4711bffd1a761bc0bc290a46007f4553","status":"successed_offline"}
+时间:2017-05-26 14:23:03.935 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:23:04.092 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 14:23:31.373 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:23:31.538 
+级别:httpPost 
+信息:GETREQUESTSTREAM:23,RESPONSE: 108ms, {"result":"ok","taskId":"OSS-0526_01a5e4d81091f966fe09c0b51b15619d","status":"successed_online"}
+时间:2017-05-26 14:23:31.538 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_01a5e4d81091f966fe09c0b51b15619d","status":"successed_online"}
+时间:2017-05-26 14:24:53.047 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:24:53.219 
+级别:httpPost 
+信息:GETREQUESTSTREAM:62,RESPONSE: 141ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 14:25:25.475 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:25:25.630 
+级别:httpPost 
+信息:GETREQUESTSTREAM:45,RESPONSE: 123ms, {"result":"ok","taskId":"OSS-0526_9543347e73bd4962a0ccb4fd61f758fb","status":"successed_online"}
+时间:2017-05-26 14:25:25.630 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_9543347e73bd4962a0ccb4fd61f758fb","status":"successed_online"}
+时间:2017-05-26 14:26:29.123 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:26:31.795 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:26:31.953 
+级别:httpPost 
+信息:GETREQUESTSTREAM:46,RESPONSE: 141ms, {"result":"ok","taskId":"OSS-0526_726989c4d105f7389b841deba104e582","status":"successed_offline"}
+时间:2017-05-26 14:26:31.953 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_726989c4d105f7389b841deba104e582","status":"successed_offline"}
+时间:2017-05-26 14:37:11.994 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:37:12.087 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:37:12.197 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_0c48a32d4aa7220ae8d288bf33562989","status":"successed_online"}
+时间:2017-05-26 14:37:12.197 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_0c48a32d4aa7220ae8d288bf33562989","status":"successed_online"}
+时间:2017-05-26 14:38:22.215 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:38:22.309 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:38:22.442 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 132ms, {"result":"ok","taskId":"OSS-0526_6c4ba58e5c803800cb4dcceed44b2456","status":"successed_offline"}
+时间:2017-05-26 14:38:22.442 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_6c4ba58e5c803800cb4dcceed44b2456","status":"successed_offline"}
+时间:2017-05-26 14:38:32.348 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:38:32.429 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:38:32.607 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 156ms, {"result":"ok","taskId":"OSS-0526_6d684f2e3024db2dda3d2626c0aef85d","status":"successed_offline"}
+时间:2017-05-26 14:38:32.622 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_6d684f2e3024db2dda3d2626c0aef85d","status":"successed_offline"}
+时间:2017-05-26 14:39:03.717 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:39:03.795 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:39:03.905 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_79df73c4cdd55241d3b6559c5aa6b2fc","status":"successed_online"}
+时间:2017-05-26 14:39:03.905 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_79df73c4cdd55241d3b6559c5aa6b2fc","status":"successed_online"}
+时间:2017-05-26 14:48:34.845 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 14:48:35.016 
+级别:httpPost 
+信息:GETREQUESTSTREAM:65,RESPONSE: 142ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 14:48:35.311 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 14:48:35.450 
+级别:httpPost 
+信息:GETREQUESTSTREAM:38,RESPONSE: 119ms, {"result":"ok","taskId":"OSS-0526_87d57641f1f5dd146e8dcff4e6453b0b","status":"successed_online"}
+时间:2017-05-26 14:48:35.452 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_87d57641f1f5dd146e8dcff4e6453b0b","status":"successed_online"}
+时间:2017-05-26 16:06:36.971 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:06:37.142 
+级别:httpPost 
+信息:GETREQUESTSTREAM:63,RESPONSE: 141ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 16:06:37.596 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 141ms, {"result":"ok","contentId":"OSL-0526_mmBwKWBRIk7qEUitFpKzL"}
+时间:2017-05-26 16:06:37.611 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-26 16:06:37.721 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 109ms, {"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-26 16:06:37.721 
+级别:Info 
+信息:{"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-26 16:07:09.953 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:07:10.140 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 94ms, {"result":"ok","contentId":"OSL-0526_2RDTQCNIIr7XOUwkq032F"}
+时间:2017-05-26 16:07:10.140 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-26 16:07:10.250 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-26 16:07:10.250 
+级别:Info 
+信息:{"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-26 16:15:59.014 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:15:59.233 
+级别:httpPost 
+信息:GETREQUESTSTREAM:46,RESPONSE: 125ms, {"result":"ok","contentId":"OSL-0526_ejNCrNbyeN63dZNKazN709"}
+时间:2017-05-26 16:15:59.233 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-26 16:15:59.358 
+级别:httpPost 
+信息:GETREQUESTSTREAM:46,RESPONSE: 125ms, {"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-26 16:15:59.358 
+级别:Info 
+信息:{"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-26 16:24:29.569 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:24:29.725 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 16:24:30.048 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:24:30.173 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 110ms, {"result":"ok","taskId":"OSS-0526_01973ed1fc80e1ce41a2b35820a9383b","status":"successed_offline"}
+时间:2017-05-26 16:24:30.173 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_01973ed1fc80e1ce41a2b35820a9383b","status":"successed_offline"}
+时间:2017-05-26 16:24:53.102 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:24:53.196 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:24:53.290 
+级别:httpPost 
+信息:GETREQUESTSTREAM:15,RESPONSE: 93ms, {"result":"ok","taskId":"OSS-0526_dadfcd35d68df2fd72d5a0cfc560acb9","status":"successed_offline"}
+时间:2017-05-26 16:24:53.290 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_dadfcd35d68df2fd72d5a0cfc560acb9","status":"successed_offline"}
+时间:2017-05-26 16:25:57.802 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:25:57.880 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:25:57.990 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_c2f8d2b5761d0ccae63d32175c9ac453","status":"successed_offline"}
+时间:2017-05-26 16:25:57.990 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_c2f8d2b5761d0ccae63d32175c9ac453","status":"successed_offline"}
+时间:2017-05-26 16:26:11.735 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:26:11.829 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:26:11.938 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_0e2fda1c2f95bd81505f62a2b104ba40","status":"successed_offline"}
+时间:2017-05-26 16:26:11.938 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_0e2fda1c2f95bd81505f62a2b104ba40","status":"successed_offline"}
+时间:2017-05-26 16:27:20.569 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:27:20.725 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 16:27:21.024 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:27:21.149 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_6e72640fd437e02652bd008b386bb1f9","status":"successed_online"}
+时间:2017-05-26 16:27:21.149 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_6e72640fd437e02652bd008b386bb1f9","status":"successed_online"}
+时间:2017-05-26 16:27:35.798 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:27:35.892 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:27:36.017 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 125ms, {"result":"ok","taskId":"OSS-0526_fefba3a007a3191386db82f4ecdf6d80","status":"successed_online"}
+时间:2017-05-26 16:27:36.017 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_fefba3a007a3191386db82f4ecdf6d80","status":"successed_online"}
+时间:2017-05-26 16:27:50.275 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:27:50.372 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:27:50.481 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_cf5881aa460081a9fa6a6faf29594dc9","status":"successed_online"}
+时间:2017-05-26 16:27:50.481 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_cf5881aa460081a9fa6a6faf29594dc9","status":"successed_online"}
+时间:2017-05-26 16:28:06.901 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:28:07.010 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:28:07.102 
+级别:httpPost 
+信息:GETREQUESTSTREAM:35,RESPONSE: 91ms, {"result":"ok","taskId":"OSS-0526_5a98b4c1f8ca5157c7a63e037590f5a9","status":"successed_online"}
+时间:2017-05-26 16:28:07.117 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_5a98b4c1f8ca5157c7a63e037590f5a9","status":"successed_online"}
+时间:2017-05-26 16:29:22.824 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:29:22.918 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:29:23.027 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 110ms, {"result":"ok","taskId":"OSS-0526_beb27bdec73d9f793987a3b22b1c4547","status":"successed_offline"}
+时间:2017-05-26 16:29:23.027 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_beb27bdec73d9f793987a3b22b1c4547","status":"successed_offline"}
+时间:2017-05-26 16:29:38.345 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:29:38.438 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:29:38.538 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 99ms, {"result":"ok","taskId":"OSS-0526_58e77e35beb551fe7e17271d944ae133","status":"successed_offline"}
+时间:2017-05-26 16:29:38.553 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_58e77e35beb551fe7e17271d944ae133","status":"successed_offline"}
+时间:2017-05-26 16:29:50.032 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:29:50.110 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:29:50.204 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 94ms, {"result":"ok","taskId":"OSS-0526_f7f9f084b14d7ef3a2a9cb564762579b","status":"successed_offline"}
+时间:2017-05-26 16:29:50.204 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_f7f9f084b14d7ef3a2a9cb564762579b","status":"successed_offline"}
+时间:2017-05-26 16:30:12.472 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:30:12.569 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:30:12.694 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 110ms, {"result":"ok","taskId":"OSS-0526_5da3e1fca4e5bb67208f68e132ae9374","status":"successed_online"}
+时间:2017-05-26 16:30:12.694 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_5da3e1fca4e5bb67208f68e132ae9374","status":"successed_online"}
+时间:2017-05-26 16:30:29.240 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:30:29.334 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:30:29.436 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 103ms, {"result":"ok","taskId":"OSS-0526_2adf6c30e7ad0ecd6ac494998b303612","status":"successed_offline"}
+时间:2017-05-26 16:30:29.436 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_2adf6c30e7ad0ecd6ac494998b303612","status":"successed_offline"}
+时间:2017-05-26 16:32:01.046 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:32:01.124 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:32:01.233 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 110ms, {"result":"ok","taskId":"OSS-0526_d89023fbda2c3d88590bd3b9a116d9ac","status":"successed_online"}
+时间:2017-05-26 16:32:01.233 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_d89023fbda2c3d88590bd3b9a116d9ac","status":"successed_online"}
+时间:2017-05-26 16:32:13.832 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:32:13.926 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:32:14.023 
+级别:httpPost 
+信息:GETREQUESTSTREAM:35,RESPONSE: 98ms, {"result":"ok","taskId":"OSS-0526_38358f522ed9d4a6a2d596096c505cc7","status":"successed_offline"}
+时间:2017-05-26 16:32:14.039 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_38358f522ed9d4a6a2d596096c505cc7","status":"successed_offline"}
+时间:2017-05-26 16:32:36.866 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:32:36.944 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:32:37.085 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_9e9b8071bae0b9d87c115ebdb1afada5","status":"successed_online"}
+时间:2017-05-26 16:32:37.085 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_9e9b8071bae0b9d87c115ebdb1afada5","status":"successed_online"}
+时间:2017-05-26 16:34:25.878 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:34:25.972 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:34:26.097 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 125ms, {"result":"ok","taskId":"OSS-0526_3d93cf5e9b1fda9841d6195cf2121039","status":"successed_online"}
+时间:2017-05-26 16:34:26.441 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_3d93cf5e9b1fda9841d6195cf2121039","status":"successed_online"}
+时间:2017-05-26 16:34:49.145 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:34:49.239 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:34:49.351 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 112ms, {"result":"ok","taskId":"OSS-0526_017aff9bca1517e55e3d0dbc0fe9b9b7","status":"successed_online"}
+时间:2017-05-26 16:34:49.351 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_017aff9bca1517e55e3d0dbc0fe9b9b7","status":"successed_online"}
+时间:2017-05-26 16:35:09.772 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:35:09.866 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:35:09.991 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","taskId":"OSS-0526_76f3f6c58878e8d096de3b55036ec628","status":"successed_offline"}
+时间:2017-05-26 16:35:09.991 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_76f3f6c58878e8d096de3b55036ec628","status":"successed_offline"}
+时间:2017-05-26 16:36:47.237 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:36:47.393 
+级别:httpPost 
+信息:GETREQUESTSTREAM:62,RESPONSE: 140ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 16:36:47.687 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:36:47.827 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 125ms, {"result":"ok","taskId":"OSS-0526_97a666bf9c5e2d6a8f6310d9d4c96136","status":"successed_offline"}
+时间:2017-05-26 16:36:47.827 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_97a666bf9c5e2d6a8f6310d9d4c96136","status":"successed_offline"}
+时间:2017-05-26 16:37:24.555 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:37:24.648 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:37:24.758 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_4272551d0b5ff747a06481ceecab91ae","status":"successed_online"}
+时间:2017-05-26 16:37:24.758 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_4272551d0b5ff747a06481ceecab91ae","status":"successed_online"}
+时间:2017-05-26 16:38:24.743 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:38:24.903 
+级别:httpPost 
+信息:GETREQUESTSTREAM:60,RESPONSE: 132ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 16:38:25.167 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:38:25.311 
+级别:httpPost 
+信息:GETREQUESTSTREAM:28,RESPONSE: 124ms, {"result":"ok","taskId":"OSS-0526_9242be58e83fc75b212e5d7d14d9eba3","status":"successed_online"}
+时间:2017-05-26 16:38:25.315 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_9242be58e83fc75b212e5d7d14d9eba3","status":"successed_online"}
+时间:2017-05-26 16:38:40.753 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:38:40.833 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:38:40.971 
+级别:httpPost 
+信息:GETREQUESTSTREAM:40,RESPONSE: 118ms, {"result":"ok","taskId":"OSS-0526_574f79fa424d096f5bd19e1f4e9fa97f","status":"successed_online"}
+时间:2017-05-26 16:38:40.975 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_574f79fa424d096f5bd19e1f4e9fa97f","status":"successed_online"}
+时间:2017-05-26 16:38:57.466 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:38:57.582 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:38:57.702 
+级别:httpPost 
+信息:GETREQUESTSTREAM:44,RESPONSE: 112ms, {"result":"ok","taskId":"OSS-0526_fafc3da06e3838e177447adea18b3f68","status":"successed_offline"}
+时间:2017-05-26 16:38:57.702 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_fafc3da06e3838e177447adea18b3f68","status":"successed_offline"}
+时间:2017-05-26 16:40:31.186 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:40:31.270 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:40:31.366 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 96ms, {"result":"ok","taskId":"OSS-0526_b0b1faddb06593769946a585d29e3e9e","status":"successed_online"}
+时间:2017-05-26 16:40:31.370 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_b0b1faddb06593769946a585d29e3e9e","status":"successed_online"}
+时间:2017-05-26 16:41:23.397 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:41:23.538 
+级别:httpPost 
+信息:GETREQUESTSTREAM:69,RESPONSE: 125ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 16:41:23.819 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:41:23.944 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 110ms, {"result":"ok","taskId":"OSS-0526_83f59c041c01d11f101ffa3bca3b1dda","status":"successed_online"}
+时间:2017-05-26 16:41:23.944 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_83f59c041c01d11f101ffa3bca3b1dda","status":"successed_online"}
+时间:2017-05-26 16:52:42.437 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 16:52:42.531 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 16:52:42.656 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","taskId":"OSS-0526_2dc4ceab62301c621eaa6852aea4d570","status":"successed_online"}
+时间:2017-05-26 16:52:42.656 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_2dc4ceab62301c621eaa6852aea4d570","status":"successed_online"}
+时间:2017-05-26 18:17:03.301 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 18:17:03.457 
+级别:httpPost 
+信息:GETREQUESTSTREAM:47,RESPONSE: 125ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 18:17:03.770 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 18:17:03.879 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 94ms, {"result":"ok","taskId":"OSS-0526_1bec09aa280aaa480a3a30521dac9064","status":"successed_online"}
+时间:2017-05-26 18:17:03.879 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_1bec09aa280aaa480a3a30521dac9064","status":"successed_online"}
+时间:2017-05-26 18:18:40.514 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 18:18:40.655 
+级别:httpPost 
+信息:GETREQUESTSTREAM:62,RESPONSE: 125ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 18:18:40.890 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 18:18:41.015 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 109ms, {"result":"ok","taskId":"OSS-0526_8fe2e53a243dcb903fa5e06615626cd4","status":"successed_online"}
+时间:2017-05-26 18:18:41.015 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_8fe2e53a243dcb903fa5e06615626cd4","status":"successed_online"}
+时间:2017-05-26 18:50:50.462 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-26 18:50:50.618 
+级别:httpPost 
+信息:GETREQUESTSTREAM:63,RESPONSE: 141ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-26 18:50:50.915 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-26 18:50:51.042 
+级别:httpPost 
+信息:GETREQUESTSTREAM:49,RESPONSE: 111ms, {"result":"ok","taskId":"OSS-0526_1e7c3f3a0296cac7288ebd01e40e90d6","status":"successed_online"}
+时间:2017-05-26 18:50:51.057 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0526_1e7c3f3a0296cac7288ebd01e40e90d6","status":"successed_online"}

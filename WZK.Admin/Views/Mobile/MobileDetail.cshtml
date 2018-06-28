@@ -1,0 +1,114 @@
+﻿@model WZK.Admin.Models.Mobile.ModifyMobile
+@{
+    ViewBag.Title = "云控管理-手机管理-" + @ViewBag.name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">云控管理</a>
+            <a href="@Url.Action("Index","Mobile")">手机管理</a>
+            <a href="javascript:;">@ViewBag.name</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        @using (Ajax.BeginForm("ModifyMobileInfo", "Mobile", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success" }, new { @class = "form-horizontal" }))
+                        {
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>手机名称：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.MobileName)
+                                    @Html.ValidationMessageFor(m => m.MobileName)
+                                    @Html.HiddenFor(m => m.Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>手机号码：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.MobileNo)
+                                    @Html.ValidationMessageFor(m => m.MobileNo)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>手机型号：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.MobileType, ViewBag.MobileTypes as List<SelectListItem>)
+                                    @Html.ValidationMessageFor(m => m.MobileType)
+                                    @Html.HiddenFor(m => m.MobileTypeName)
+                                    @Html.HiddenFor(m => m.DPI)
+                                    @Html.HiddenFor(m => m.GuidEmpty)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Mac地址：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Mac)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Android推送标识：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.AndroidClientId,new {@readonly= "readonly" })
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>所在机房：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.IDC, ViewBag.IDCS as List<SelectListItem>)
+                                    @Html.ValidationMessageFor(m => m.IDC)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>所在位置：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.Position)
+                                    @Html.ValidationMessageFor(m => m.Position)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">是否激活：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.IsActive, ViewBag.ddIsActive as List<SelectListItem>)
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("form").data("validator").settings.ignore = "";
+            $("#MobileType").change(function () {
+                var $this = $(this);
+                if ($this.val() !== "@Guid.Empty") {
+                    var mttxt = $(this).find("option:selected").text();
+                    $("#MobileTypeName").val(mttxt.split('(')[0].trim());
+                    $("#DPI").val(mttxt.split('(')[1].replace(")", "").trim());
+                }
+            });
+        });
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功", { time: 1000,icon:1}, function () {
+                    window.location.href = "/Mobile/Index";
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+            }
+        }
+    </script>
+}

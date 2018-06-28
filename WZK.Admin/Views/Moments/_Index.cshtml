@@ -1,0 +1,106 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    .img-margin{margin-right:5px;margin-top:5px;margin-bottom:5px}
+</style>
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w12">标题</th>
+                <th class="w30">内容</th>
+                <th class="w25">图片</th>
+                <th class="w8">录入人</th>
+                <th class="w10">录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="6">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                var ck = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Moments", "MomentsDetail");
+                var dk = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Moments", "DelMoments");
+                var tk = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Task", "ModifyTaskInfo");
+                foreach (WZK.Models.admin.MMoments item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td>@item.Title</td>
+                        <td>@item.Content</td>
+                        <td>
+                        @if (string.IsNullOrWhiteSpace(item.Picture))
+                        {
+                            <text>未上传</text>
+                        }
+                        else
+                        {
+                            var ImgArr = item.Picture.Split(',');
+                            for (int i=0;i< ImgArr.Length;i++)
+                            {
+                                <a  data-lightbox="@item.Id" href="@ImgArr[i]">
+                                    <img src="@(ImgArr[i]+"?x-oss-process=style/small")" width="50" height="50" class="hover-img img-margin" />
+                                </a>    
+                            }
+                        }
+                        </td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (ck)
+                                {
+                                    @Html.ActionLink("查看", "MomentsDetail", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+
+                                @if (dk)
+                                {
+                                    <a href="javascript:;" data-id="@item.Id"  class="btn btn-danger xc btn-del btn-mini">删除</a>
+                                }
+                                @if (tk)
+                                {
+                                    @Html.ActionLink("新建任务", "TaskDetail", "Task", new { templateId = item.Id, tName =item.Title, type = 3 }, new { @class = "btn btn-primary xc btn-mini" })
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}
+@*@Styles.Render("~/Content/css/jquery-ui.css")
+@Styles.Render("~/Scripts/LightBox/css/lightbox.min.css")
+@Scripts.Render("~/Scripts/jquery-ui.js", "~/Scripts/LightBox/js/lightbox.min.js")*@
+<script type="text/javascript">
+    $(function () {
+        $(".btn-del").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            layer.confirm('确认要删除该朋友圈吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DelMoments")', { id: id }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg('删除成功', { icon: 1, time: 1200 }, function () {
+                            location.reload(true);
+                        });
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    })
+</script>

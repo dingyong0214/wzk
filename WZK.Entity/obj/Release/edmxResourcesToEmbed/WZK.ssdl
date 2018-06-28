@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WZK.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AppAuthorize">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Password" Type="int" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Customer" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" />
+    <Property Name="InsertTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AutoReply">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TemplateId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AskNo" Type="varchar" MaxLength="50" />
+    <Property Name="Question" Type="varchar" MaxLength="500" />
+    <Property Name="Answer" Type="varchar" MaxLength="500" />
+    <Property Name="Pic" Type="varchar" MaxLength="500" />
+    <Property Name="PicIndex" Type="int" />
+    <Property Name="OrderNo" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AutoReplyTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="Pic" Type="varchar" MaxLength="500" />
+    <Property Name="PicIndex" Type="int" />
+    <Property Name="IsDel" Type="int" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="IDCS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Longitude" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Latitude" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LatAndLong" Type="varchar(max)" />
+    <Property Name="Address" Type="varchar" MaxLength="256" />
+    <Property Name="IsDel" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MenuButton">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Controller" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ButtonType" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="EnglishName" Type="varchar" MaxLength="32" />
+    <Property Name="Url" Type="varchar" MaxLength="128" />
+    <Property Name="MenuType" Type="int" Nullable="false" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mobile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MobileName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MobileType" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MobileTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DPI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="50" />
+    <Property Name="Mac" Type="varchar" MaxLength="50" />
+    <Property Name="IDC" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Position" Type="varchar" MaxLength="500" />
+    <Property Name="AndroidClientId" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MobileTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DPI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MomentsTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="1024" />
+    <Property Name="IsDel" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OperateLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="OperateDesc" Type="nvarchar" MaxLength="1024" Nullable="false" />
+    <Property Name="IP" Type="varchar" MaxLength="32" />
+    <Property Name="OperateTime" Type="datetime" Nullable="false" />
+    <Property Name="OldBussnessId" Type="varchar" MaxLength="1024" />
+    <Property Name="OldTableName" Type="varchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="PictureAnalysis">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MobileType" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="APPName" Type="varchar" MaxLength="50" />
+    <Property Name="Page" Type="varchar" MaxLength="50" />
+    <Property Name="Action" Type="varchar" MaxLength="50" />
+    <Property Name="Param" Type="varchar" MaxLength="50" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RealtimeControl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MobileId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Shootme" Type="varchar" MaxLength="500" />
+    <Property Name="IsUsed" Type="int" />
+    <Property Name="Flag" Type="uniqueidentifier" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="ButtonIds" Type="nvarchar(max)" />
+    <Property Name="OrderNo" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Script">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ScriptName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MobileType" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DPI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ScriptPath" Type="varchar" MaxLength="50" />
+    <Property Name="APPName" Type="varchar" MaxLength="50" />
+    <Property Name="ScriptContent" Type="varchar(max)" Nullable="false" />
+    <Property Name="IsDel" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TaskName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TaskDesc" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="TaskType" Type="int" Nullable="false" />
+    <Property Name="TaskTemplateId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TemplateName" Type="varchar" MaxLength="50" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="ExecuteCycle" Type="int" Nullable="false" />
+    <Property Name="ExecuteTimes" Type="int" Nullable="false" />
+    <Property Name="IsComplete" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TaskDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TaskId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MobileId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ExecutedTimes" Type="int" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="InputUser" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InsertTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Photo" Type="varchar" MaxLength="256" />
+    <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="IdCard" Type="varchar" MaxLength="256" />
+    <Property Name="Department" Type="nvarchar" MaxLength="32" />
+    <Property Name="Mobile" Type="varchar" MaxLength="128" />
+    <Property Name="Telephone" Type="varchar" MaxLength="20" />
+    <Property Name="Mail" Type="varchar" MaxLength="100" />
+    <Property Name="RegisterTime" Type="datetime" Nullable="false" />
+    <Property Name="State" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="varchar" MaxLength="128" />
+    <Property Name="InputUser" Type="uniqueidentifier" />
+    <Property Name="UpdateUser" Type="uniqueidentifier" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="WZKStoreContainer">
+    <EntitySet Name="AppAuthorize" EntityType="Self.AppAuthorize" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AutoReply" EntityType="Self.AutoReply" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AutoReplyTemplate" EntityType="Self.AutoReplyTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IDCS" EntityType="Self.IDCS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MenuButton" EntityType="Self.MenuButton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mobile" EntityType="Self.Mobile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MobileTypes" EntityType="Self.MobileTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MomentsTemplate" EntityType="Self.MomentsTemplate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OperateLog" EntityType="Self.OperateLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PictureAnalysis" EntityType="Self.PictureAnalysis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RealtimeControl" EntityType="Self.RealtimeControl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Script" EntityType="Self.Script" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskDetail" EntityType="Self.TaskDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAdmin" EntityType="Self.UserAdmin" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

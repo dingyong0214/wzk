@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w15">任务名称</th>
+                <th class="w20">任务描述</th>
+                <th class="w8">任务类型</th>
+                <th class="w15">模板名称</th>
+                <th class="w12">开始执行时间</th>
+                <th class="w7">录入人</th>
+                <th class="w12">录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="8">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                var ck = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Task", "TaskDetail");
+                var zd = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Task", "AddTaskDetail");
+                foreach (WZK.Models.admin.MTask item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td>@item.TaskName</td>
+                        <td>@item.TaskDesc</td>
+                        <td>@EnumTool.GetDesc((ETaskType)item.TaskType)</td>
+                        <td>@item.TemplateName</td>
+                        <td>@item.StartTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (ck)
+                                {
+                                    @Html.ActionLink("查看", "TaskDetail", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+
+                                @if (zd)
+                                {
+                                    @Html.ActionLink("指定手机", "TaskDetailList", new { item.Id }, new { @class = "btn btn-primary xc btn-mini" })
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}

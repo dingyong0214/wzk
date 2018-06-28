@@ -1,0 +1,96 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    input[type=checkbox]{vertical-align:top;}
+</style>
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w5"><input type="checkbox" id="checkAll" />&nbsp;全选</th>
+                <th class="w15">手机名称</th>
+                <th class="w10">手机号码</th>
+                <th class="w10">手机型号</th>
+                <th class="w15">所在机房</th>
+                <th class="w10">分辨率</th>
+                <th class="w7">是否激活</th>
+                <th class="w7">录入人</th>
+                <th class="w10">录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="10">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                var ck = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Mobile", "MobileDetail");
+                var dk = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Mobile", "DelMobile");
+                var control = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Mobile", "DeviceControl");
+                foreach (WZK.Models.admin.MMobile item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td><input type="checkbox"  class="js-checkbox"  value="@item.Id"/></td>
+                        <td>@item.MobileName</td>
+                        <td>@item.MobileNo</td>
+                        <td>@item.MobileTypeName</td>
+                        <td>@item.IDC</td>
+                        <td>@item.DPI</td>
+                        <td>@(item.IsActive==0?"否":"是")</td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (ck)
+                                {
+                                    @Html.ActionLink("查看", "MobileDetail", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+                                @if (control)
+                                {
+                                    @Html.ActionLink("实时控制", "DeviceControl", new { item.Id }, new { @class = "btn btn-primary xc btn-mini" })
+                                }
+                                @if (dk)
+                                {
+                                    <a href="javascript:;" data-id="@item.Id" data-name="@item.MobileName" class="btn btn-danger xc btn-del btn-mini">删除</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        $(".btn-del").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            var name = $this.data("name");
+            layer.confirm('确认要删除手机<span class="deltc">“' + name + '”</span>吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DelMobile")', { id: id }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg('删除成功', { icon: 1, time: 1000 }, function () {
+                            location.reload(true);
+                        });
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    });
+</script>

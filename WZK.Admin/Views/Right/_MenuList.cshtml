@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w15">菜单名</th>
+                <th>英文名</th>
+                <th>地址</th>
+                <th>排序</th>
+                <th>录入人</th>
+                <th>录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="7">未查询到菜单数据</td>
+                </tr>
+            }
+            else
+            {
+                var ck = RightInfo.GetRightInfo().CanUse("Right", "MenuDetail");
+                var sz = RightInfo.GetRightInfo().CanUse("Right", "ActionList");
+                foreach (WZK.Business.Admin.Mmenus item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td>@item.Name</td>
+                        <td>@item.EnglishName</td>
+                        <td>@item.Url</td>
+                        <td>@item.OrderNo</td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (ck)
+                                {
+                                    @Html.ActionLink("查看", "MenuDetail", new { item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+                                @if (!string.IsNullOrWhiteSpace(item.Url) && sz)
+                                {
+                                    @Html.ActionLink("设置菜单功能", "ActionList", new { MenuId = item.Id }, new { @class = "btn btn-info xc btn-mini" })
+                                }
+                                @if (RightInfo.GetRightInfo().CanUse("Right", "DelMenu"))
+                                {
+                                    <a href="javascript:;" data-id="@item.Id" data-content="@item.Name" class="btn btn-danger xc btn-del btn-mini">删除</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+ <div class="pagination page">
+       @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+ </div>
+}
+<script type="text/javascript">
+    $(function () {
+        $(".btn-del").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            var menuName = $this.data("content");
+            layer.confirm('确认要删除菜单<span class="deltc">“' + menuName + '”</span>吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DelMenu")', { menuId: id }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg("删除成功", { time: 1000, icon: 1 }, function () {
+                            location.href = '@Url.Action("MenuList")';
+                        });
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    })
+</script>

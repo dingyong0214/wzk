@@ -1,0 +1,12 @@
+﻿.red {
+    color:red;
+}
+.ul_show_div{height:250px;padding-top:15px;}
+.ul_show_div li{display:block;float:left;width:100%;min-height:36px;line-height:36px;margin-top:10px;}
+.ul_show_div li label{width:136px;display:block;float:left;text-align:right;}
+.ul_show_div li textarea{width:260px;padding:3px;}
+.ul_show_div li .rd1{float:left; vertical-align:middle;}
+.ul_show_div li .lb1{float:left;text-align:left;width:auto;margin:0 10px;display:inline;vertical-align:middle;}
+.list_btn{text-align:left;padding-left:160px;padding-top:30px;}
+#lbMess{color:red;}
+.list_btn input{padding:6px 20px;}

@@ -1,0 +1,13 @@
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\WZK.Entity.dll.config
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\WZK.Entity.dll
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\WZK.Entity.pdb
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\EmitMapper.dll
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\EntityFramework.dll
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\EntityFramework.SqlServer.dll
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\EntityFramework.xml
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\EntityFramework.SqlServer.xml
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\work\webSite\WZK\WZK.Entity\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\work\webSite\WZK\WZK.Entity\obj\Debug\WZK.Entity.dll
+E:\work\webSite\WZK\WZK.Entity\obj\Debug\WZK.Entity.pdb
+E:\work\webSite\WZK\WZK.Entity\obj\Debug\WZK.Entity.csprojResolveAssemblyReference.cache

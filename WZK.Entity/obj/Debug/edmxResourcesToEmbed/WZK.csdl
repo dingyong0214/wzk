@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WZK" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AppAuthorize">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Password" Type="Int32" Nullable="false" />
+    <Property Name="Token" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Customer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" />
+    <Property Name="InsertTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="AutoReply">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="TemplateId" Type="Guid" Nullable="false" />
+    <Property Name="AskNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Answer" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Pic" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PicIndex" Type="Int32" />
+    <Property Name="OrderNo" Type="Int32" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="AutoReplyTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Pic" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PicIndex" Type="Int32" />
+    <Property Name="IsDel" Type="Int32" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="IDCS">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LatAndLong" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="IsDel" Type="Int32" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="MenuButton">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Controller" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Action" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OrderNo" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ButtonType" Type="Int32" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EnglishName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Url" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="MenuType" Type="Int32" Nullable="false" />
+    <Property Name="OrderNo" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mobile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="MobileName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MobileType" Type="Guid" Nullable="false" />
+    <Property Name="MobileTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DPI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mac" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDC" Type="Guid" Nullable="false" />
+    <Property Name="Position" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AndroidClientId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Int32" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MobileTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DPI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MomentsTemplate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Int32" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="OperateLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MenuName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OperateDesc" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IP" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="OperateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OldBussnessId" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="OldTableName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PictureAnalysis">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="MobileType" Type="Guid" Nullable="false" />
+    <Property Name="APPName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Param" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="RealtimeControl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="MobileId" Type="Guid" Nullable="false" />
+    <Property Name="Shootme" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsUsed" Type="Int32" />
+    <Property Name="Flag" Type="Guid" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ButtonIds" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrderNo" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Script">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="ScriptName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MobileType" Type="Guid" Nullable="false" />
+    <Property Name="DPI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ScriptPath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="APPName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ScriptContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsDel" Type="Int32" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="TaskName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TaskDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TaskType" Type="Int32" Nullable="false" />
+    <Property Name="TaskTemplateId" Type="Guid" Nullable="false" />
+    <Property Name="TemplateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExecuteCycle" Type="Int32" Nullable="false" />
+    <Property Name="ExecuteTimes" Type="Int32" Nullable="false" />
+    <Property Name="IsComplete" Type="Int32" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TaskDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="TaskId" Type="Guid" Nullable="false" />
+    <Property Name="MobileId" Type="Guid" Nullable="false" />
+    <Property Name="ExecutedTimes" Type="Int32" Nullable="false" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="InputUser" Type="Guid" Nullable="false" />
+    <Property Name="InsertTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="UserAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdCard" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RegisterTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="InputUser" Type="Guid" />
+    <Property Name="UpdateUser" Type="Guid" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="WZKEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AppAuthorize" EntityType="Self.AppAuthorize" />
+    <EntitySet Name="AutoReply" EntityType="Self.AutoReply" />
+    <EntitySet Name="AutoReplyTemplate" EntityType="Self.AutoReplyTemplate" />
+    <EntitySet Name="IDCS" EntityType="Self.IDCS" />
+    <EntitySet Name="Location" EntityType="Self.Location" />
+    <EntitySet Name="MenuButton" EntityType="Self.MenuButton" />
+    <EntitySet Name="Menus" EntityType="Self.Menus" />
+    <EntitySet Name="Mobile" EntityType="Self.Mobile" />
+    <EntitySet Name="MobileTypes" EntityType="Self.MobileTypes" />
+    <EntitySet Name="MomentsTemplate" EntityType="Self.MomentsTemplate" />
+    <EntitySet Name="OperateLog" EntityType="Self.OperateLog" />
+    <EntitySet Name="PictureAnalysis" EntityType="Self.PictureAnalysis" />
+    <EntitySet Name="RealtimeControl" EntityType="Self.RealtimeControl" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="Script" EntityType="Self.Script" />
+    <EntitySet Name="Task" EntityType="Self.Task" />
+    <EntitySet Name="TaskDetail" EntityType="Self.TaskDetail" />
+    <EntitySet Name="UserAdmin" EntityType="Self.UserAdmin" />
+  </EntityContainer>
+</Schema>

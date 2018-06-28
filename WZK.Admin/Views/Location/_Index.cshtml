@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    .img-margin {
+        margin-right: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    th,td,tr{word-break:break-all}
+</style>
+<div class="widget-content nopadding">
+    <table class="table table-bordered table-striped with-check table-hover">
+        <thead>
+            <tr>
+                <th class="w15">标题</th>
+                <th class="w8">经度</th>
+                <th class="w8">纬度</th>
+                <th class="w20">经纬度</th>
+                <th class="w20">定位地址</th>
+                <th class="w8">录入人</th>
+                <th class="w12">录入时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.List.Count == 0)
+            {
+                <tr class="gradeA">
+                    <td colspan="8">未查询到相关数据</td>
+                </tr>
+            }
+            else
+            {
+                var dk = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Location", "DelLocation");
+                var tk = WZK.Admin.Common.RightInfo.GetRightInfo().CanUse("Task", "ModifyTaskInfo");
+                foreach (WZK.Models.admin.MLocation item in ViewBag.List.ReturnList)
+                {
+                    <tr class="gradeA">
+                        <td>@item.Title</td>
+                        <td>@item.Longitude </td>
+                        <td>@item.Latitude </td>
+                        <td>@item.LatAndLong </td>
+                        <td>@item.Address </td>
+                        <td>@item.InputUser</td>
+                        <td>@item.InsertTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <div class="xc_wrap">
+                                @if (dk)
+                                {
+                                    <a href="javascript:;" data-id="@item.Id" data-name="@item.Title" class="btn btn-danger xc btn-del btn-mini">删除</a>
+                                }
+                                @if (tk)
+                                {
+                                    @Html.ActionLink("新建任务", "TaskDetail", "Task", new { templateId = item.Id, tName =item.Title, type = 4 }, new { @class = "btn btn-primary xc btn-mini" })
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if ((int)ViewBag.List.Count > WZK.Common.ConfigData.PageConfig.PageSize)
+{
+    <div class="pagination page">
+        @Html.ShowPageNavigate((int)ViewBag.List.Count, WZK.Common.ConfigData.PageConfig.PageSize)
+    </div>
+}
+<script type="text/javascript">
+    $(function () {
+        $(".btn-del").click(function () {
+            var $this = $(this);
+            var id = $this.data("id");
+            var name = $this.data("name");
+            layer.confirm('确认要删除定位 <span class="deltc">“' + name + '”</span>吗？', {
+                btn: ['确认', '取消'] //按钮
+            }, function () {
+                $.post('@Url.Action("DelLocation")', { id: id }, function (data) {
+                    if (data.IsPass == true) {
+                        layer.msg('删除成功', { icon: 1, time: 1200 }, function () {
+                            location.reload(true);
+                        });
+                    } else {
+                        layer.msg('删除失败：' + data.msg, { icon: 2 });
+                    }
+                });
+            });
+        });
+    })
+</script>

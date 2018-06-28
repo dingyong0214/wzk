@@ -1,0 +1,157 @@
+﻿@using WZK.Entity;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title></title>
+    <link href="/skin/css/mui.min.css" rel="stylesheet" />
+    <style>
+        .name {
+            padding: 10px 12px !important;
+            height: auto !important;
+        }
+
+        .mui-card {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            border-radius: 0 !important;
+        }
+
+
+        .mf {
+            margin-left: 20px;
+        }
+
+        .wold {
+            width: 10%;
+        }
+
+        .box {
+            display: -webkit-flex;
+            display: -webkit-box;
+            display: flex;
+            width: 100%;
+        }
+
+        .num {
+            width: 33.33333333%;
+        }
+
+            .num span {
+                display: block;
+            }
+
+                .num span:last-child {
+                    color: #BBBBBB;
+                    font-size: 12px;
+                }
+
+        .mt {
+            margin-top: 15px;
+        }
+
+        .c-box {
+            margin: 6px 0;
+        }
+
+        .c-lbox {
+            width: 45%;
+            display: inline-block;
+        }
+
+        .numm {
+            font-size: 16px;
+        }
+
+        .color {
+            color: #BBBBBB;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-left-nav mui-pull-left" href="@Url.Action("Index")"></a>
+        <h1 class="mui-title">投票结果</h1>
+    </header>
+    <div class="mui-content">
+
+        @if (ViewBag.Flag == 0)
+        {
+            foreach (VoteResult item in ViewBag.VoteResult.ReturnList)
+            {
+                <div class="mui-card">
+                    <form class="mui-input-group">
+                        <div class="mui-input-row name ">
+                            <div class="c-box"><span class="color">表决事项：</span>@item.MemberName</div>
+                            <div class="box mt">
+                                <div class="num">
+                                    <span class="numm">@item.AgreeNum</span>
+                                    <span>赞成票数</span>
+                                </div>
+                                <div class="num">
+                                    <span class="numm">@item.AgainstNum</span>
+                                    <span>反对票数</span>
+                                </div>
+                                <div class="num">
+                                    <span class="numm">@item.QiQuanNum</span>
+                                    <span>弃权票数</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            }
+
+        }
+        else
+        {
+            foreach (VoteResult item in ViewBag.VoteResult.ReturnList)
+            {
+                <div class="mui-card">
+                    <form class="mui-input-group">
+                        <div class="mui-input-row name ">
+                            <div class="c-box">
+                                <span class="color">@(item.HouXuanXuHao)、</span>@(item.MemberName)(@item.Company)
+                            </div>
+                            <div class="c-box">
+                                <span class="c-lbox"><span class="color">竞选职务：</span>@item.DutyName</span>
+                                <span class="c-rbox"><span class="color">通过率：</span>@(Math.Round(item.PassRate * 100, 2))%</span>
+                           </div>
+                            <div>
+
+                                <div class="box mt">
+                                    <div class="num">
+                                        <span class="numm">@item.AgreeNum</span>
+                                        <span>赞成票数</span>
+                                    </div>
+                                    <div class="num">
+                                        <span class="numm">@item.AgainstNum</span>
+                                        <span>反对票数</span>
+                                    </div>
+                                    <div class="num">
+                                        <span class="numm">@item.QiQuanNum</span>
+                                        <span>弃权票数</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            }
+
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+时间:2017-06-07 10:51:18.452 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0607_9f7a05da2d0c9484ed4078e6a49efaab","status":"successed_online"}
+时间:2017-06-07 10:51:31.530 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-06-07 10:51:31.594 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-06-07 10:51:31.706 
+级别:httpPost 
+信息:GETREQUESTSTREAM:46,RESPONSE: 112ms, {"result":"ok","taskId":"OSS-0607_da94594d93cc581e322ade7cb78d6aac","status":"successed_online"}
+时间:2017-06-07 10:51:31.706 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0607_da94594d93cc581e322ade7cb78d6aac","status":"successed_online"}
+时间:2017-06-07 14:08:53.878 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0607_4be0f89047d214e9cb04310960149e4d","status":"successed_online"}
+时间:2017-06-07 14:09:07.669 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-06-07 14:09:07.743 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-06-07 14:09:07.857 
+级别:httpPost 
+信息:GETREQUESTSTREAM:37,RESPONSE: 114ms, {"result":"ok","taskId":"OSS-0607_91ad8f4c603d470bc48108bbf5057636","status":"successed_online"}
+时间:2017-06-07 14:09:07.857 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0607_91ad8f4c603d470bc48108bbf5057636","status":"successed_online"}
+时间:2017-06-07 18:25:10.702 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0607_fb0ef31ce0aa01b286bcadcb4b4451ad","status":"successed_online"}
+时间:2017-06-07 18:25:18.770 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-06-07 18:25:18.840 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-06-07 18:25:18.950 
+级别:httpPost 
+信息:GETREQUESTSTREAM:35,RESPONSE: 110ms, {"result":"ok","taskId":"OSS-0607_49279378a80cc6daddb631d41a9d6b1a","status":"successed_online"}
+时间:2017-06-07 18:25:18.950 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0607_49279378a80cc6daddb631d41a9d6b1a","status":"successed_online"}
+时间:2017-06-07 18:26:17.415 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-06-07 18:26:17.479 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-06-07 18:26:17.586 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 107ms, {"result":"ok","taskId":"OSS-0607_3d054d161ef45245fc5a38920ece6adc","status":"successed_online"}
+时间:2017-06-07 18:26:17.586 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0607_3d054d161ef45245fc5a38920ece6adc","status":"successed_online"}
+时间:2017-06-07 18:26:25.963 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-06-07 18:26:26.028 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-06-07 18:26:26.125 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 96ms, {"result":"ok","taskId":"OSS-0607_6a2b2eb31380e61886fad1ad36b3afdb","status":"successed_online"}
+时间:2017-06-07 18:26:26.125 
+级别:PushMessageToSingle 
+信息:{"result":"ok","taskId":"OSS-0607_6a2b2eb31380e61886fad1ad36b3afdb","status":"successed_online"}

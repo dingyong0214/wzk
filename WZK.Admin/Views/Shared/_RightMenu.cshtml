@@ -1,0 +1,146 @@
+﻿@*
+    获取权限菜单的无限级联，
+    可以通过ViewData传值的方式（参数名menuId），传递选中的权限菜单
+    调用者通过getMenuId()得到所选的MenuId
+    author:lorne
+    creatTime:2016-01-15
+*@
+
+@{
+    Layout = null;
+    var GetMenuList = "/Right/GetMenuList";
+    var GetSiblingMenuList = "/Right/GetSiblingMenuList";
+    if (ViewData["getType"] != null && ViewData["getType"].ToString() == "company")
+    {
+        GetMenuList = "/Right/GetCompanyMenuList";
+        GetSiblingMenuList = "/Right/GetSiblingCompanyMenuList";
+    }
+}
+
+@Scripts.Render("~/Scripts/SringBuilder.js")
+<div class="m-wrap span2" id="div_menu" style="width:auto !important"></div>
+    <input type="hidden" id="MenuId" name="MenuId" value="@(ViewData["menuId"]==null?0:ViewData["menuId"])" />
+    <input type="hidden" id="OrderNo" />
+    <script type="text/javascript">
+        var original = "0";
+        var getMenuData;
+
+        $(function () {
+            //获取菜单数据
+            getMenuData = function (no) {
+                $.ajax({
+                    url: '@GetMenuList',
+                    type: 'POST',
+                    data: { "parentId": no },
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.ReturnList != null) {
+                            var option = new StringBuilder();
+                            if (data.ReturnList.length > 0) {
+                                option.AppendFormat("<select id='parentCode{0}' class='selection'>", no);
+                                option.AppendFormat("<option value='{0}' on='{1}'>--请选择--</option>", no, data.ReturnList[0].OrderNo.substr(0, data.ReturnList[0].OrderNo.length - 3));
+                                $(data.ReturnList).each(function () {
+                                    option.AppendFormat("<option value='{0}' on='{1}'>{2}</option>", this.Id, this.OrderNo, this.Name);
+                                });
+                                option.Append("</select>");
+                            }
+
+                            if ($(".selection").length) {
+                                if (option._length > 0) {
+                                    $(".selection:last").after(option.ToString());
+                                }
+                            } else {
+                                $("#div_menu").html(option.ToString());
+                            }
+                            //所有下拉响应
+                            $(".selection").unbind().change(function () {
+                                var $this = $(this);
+                                if (!($this.prev() && $this.prev().val() == $this.val()) && $this.val() != original) {
+                                    getMenuData($this.val());
+                                }
+                                $(".selection:gt(" + $this.index() + ")").remove();
+                                $("#MenuId").val($this.val());
+                                $("#OrderNo").val($this.find(":selected").attr("on"));
+                                if ($("#ParentId")) {
+                                    $("#ParentId").val($this.val());
+                                }
+                            });
+                        }
+                    },
+                    error: function (err) {
+                    }
+                });
+            }
+        });
+    </script>
+
+    @if (ViewData["menuId"] == null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                getMenuData(original);
+            });
+        </script>
+    }
+    else
+    {
+        <script type="text/javascript">
+            $(function () {
+                var initData = function (id) {
+                    $.ajax({
+                        url: "@GetSiblingMenuList",
+                        type: "POST",
+                        data: { "id": id },
+                        dataType: "json",
+                        async: false,
+                        success: function (data) {
+                            if (data.ReturnList != null && data.ReturnList.length > 0) {
+                                var parentId = data.ReturnList[0].ParentId;
+                                var option = new StringBuilder();
+                                option.AppendFormat("<select id='parentCode{0}' class='selection'>", parentId);
+                                option.AppendFormat("<option value='{0}' on='{1}'>--请选择--</option>", parentId, data.ReturnList[0].OrderNo.substr(0, data.ReturnList[0].OrderNo.length - 3));
+                                $(data.ReturnList).each(function () {
+                                    option.AppendFormat("<option value='{0}' on='{1}'>{2}</option>", this.Id, this.OrderNo, this.Name);
+                                });
+                                option.Append("</select>");
+
+                                if ($(".selection").length) {
+                                    $(".selection:first").before(option.ToString());
+                                } else {
+                                    $("#div_menu").html(option.ToString());
+                                }
+
+                                //所有下拉响应
+                                $(".selection").unbind().change(function () {
+                                    var $this = $(this);
+                                    if (!($this.prev() && $this.prev().val() == $this.val()) && $this.val() != original) {
+                                        getMenuData($this.val());
+                                    }
+                                    $(".selection:gt(" + $this.index() + ")").remove();
+                                    $("#MenuId").val($this.val());
+                                    $("#OrderNo").val($this.find(":selected").attr("on"));
+                                    if ($("#ParentId")) {
+                                        $("#ParentId").val($this.val());
+                                    }
+                                });
+
+                                //选中
+                                $(".selection:first").find("option[value='" + id + "']").attr("selected", true);
+
+                                //递归
+                                if (parentId != original) {
+                                    initData(parentId);
+                                } else {
+                                    //触发最后一个下拉框的change事件
+                                    $(".selection:last").change();
+                                }
+                            }
+                        }
+                    });
+                }
+
+                initData("@ViewData["menuId"]");
+            });
+        </script>
+    }
+

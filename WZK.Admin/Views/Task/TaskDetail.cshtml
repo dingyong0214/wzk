@@ -1,0 +1,141 @@
+﻿@model WZK.Admin.Models.Task.ModifyTask
+@{
+    ViewBag.Title = "云控管理-任务管理-" + @ViewBag.name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb">
+            <a href="javascript:;"><i class="icon-home"></i>微智控运营管理系统</a>
+            <a href="javascript:;">云控管理</a>
+            <a href="@Url.Action("Index","Task")">任务管理</a>
+            <a href="javascript:;">@ViewBag.name</a>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-content nopadding">
+                        @using (Ajax.BeginForm("ModifyTaskInfo", "Task", new AjaxOptions { HttpMethod = "POST", OnSuccess = "success" }, new { @class = "form-horizontal" }))
+                        {
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>任务名称：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.TaskName)
+                                    @Html.ValidationMessageFor(m => m.TaskName)
+                                    @Html.HiddenFor(m => m.Id)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>任务描述：</label>
+                                <div class="controls">
+                                    @Html.TextAreaFor(m => m.TaskDesc, 10, 40, new { @style = "width:320px" })
+                                    @Html.ValidationMessageFor(m => m.TaskDesc)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>任务类型：</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.TaskType, ViewBag.LTaskType as List<SelectListItem>)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">任务模板：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.TemplateName, new { @readonly = "readonly" })
+                                    <input type="button" value="选择模板" class="btn btn-info span1  mrl" id="btnChoice" />
+                                    @Html.HiddenFor(m => m.TaskTemplateId)
+                                    @Html.ValidationMessageFor(m => m.TemplateName)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>任务开始时间：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.StartTime, new { @onFocus = "WdatePicker({minDate:'%y/%M/%d %H:(%m+30):%s',dateFmt: 'yyyy/MM/dd HH:mm:ss' })" })
+                                    @Html.ValidationMessageFor(m => m.StartTime)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><span>*</span>执行周期：</label>
+                                <div class="controls">
+                                    @Html.TextBoxFor(m => m.ExecuteCycle)
+                                    <span> &nbsp; 执行周期：m 单位分钟 (m=0 ->无周期,且只执行1次，m>0 -> m分钟执行一次)</span>
+                                    @Html.ValidationMessageFor(m => m.ExecuteCycle)
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">执行次数：</label>
+                                <div class="controls">
+                                  @Html.TextBoxFor(m => m.ExecuteTimes)
+                                    <span> &nbsp; 需要执行的次数：n (n=0 -> 无限次，n>0 -> 执行n次)</span>
+                                  @Html.ValidationMessageFor(m => m.ExecuteTimes)
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <label id="tdMsg"></label>
+                                <input type="submit" value="保存" class="btn btn-info" />
+                                <input type="button" value="返回" class="btn" onclick="javascript: history.go(-1);" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+  @Scripts.Render("~/Scripts/My97DatePicker/WdatePicker.js")
+    <script type="text/javascript">
+        $(function () {
+            $("form").data("validator").settings.ignore = "";
+            $("#btnChoice").click(function () {
+                var type = Math.floor($("#TaskType").val());
+                var requestUrl="", title="";
+                if (type == 1) {//执行脚本
+                    requestUrl = '@Url.Action("ScriptList", "Script")';
+                    title = "选择脚本模板";
+                } else if (type == 2) {//自动回复
+                    requestUrl = '@Url.Action("ReplyList", "AutoReply")';
+                    title = "选择自动回复模板";
+                } else if (type == 3) {//发朋友圈
+                    requestUrl = '@Url.Action("MomentsList", "Moments")';
+                    title = "选择朋友圈模板";
+                } else if (type == 4) {//定位
+                    requestUrl = '@Url.Action("LocationList", "Location")';
+                    title = "选择定位模板";
+                }
+                $.get(requestUrl, {}, function (view) {
+                    layer.open({
+                        type: 1,
+                        title: title,
+                        skin: 'layui-layer-rim', //加上边框
+                        area: ['1024px', '670px'], //宽高
+                        content: view,
+                        btn: ['取消'],
+                        yes: function () {
+                            layer.closeAll();
+                        }
+                    });
+                });
+            });
+            $("body").on('click', '.js-choice', function () {
+                var $this = $(this);
+                $("#TaskTemplateId").val($this.data("id"));
+                $("#TemplateName").val($this.data("name"));
+                layer.closeAll();
+            });
+        });
+        function success(data) {
+            if (data.IsPass) {
+                layer.msg("保存成功", { time: 1000,icon:1}, function () {
+                    window.location.href = "/Task/Index";
+                });
+            } else {
+                $("#tdMsg").text(data.Desc);
+            }
+        }
+    </script>
+}
+
+

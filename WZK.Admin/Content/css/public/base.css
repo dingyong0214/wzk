@@ -1,0 +1,185 @@
+﻿@charset "UTF-8";
+/*样式重置*/
+body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select, div { margin: 0; padding: 0; }
+
+body { font: 12px "microsoft yahei","Arial Narrow",HELVETICA; -webkit-text-size-adjust: 100%; padding: 0; margin: 0; background-color: #F5F5F5; }
+
+a { color: #333; text-decoration: none; }
+
+textarea { resize: none; }
+
+em { font-style: normal; }
+
+li { list-style: none; }
+
+s { text-decoration: none; }
+
+b { font-weight: normal; }
+
+img { border: 0; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+p { word-wrap: break-word; }
+
+i { font-style: normal; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+
+input[type=button] { cursor: pointer; }
+
+/*样式重置结束*/
+
+
+/*登录*/
+.v4_login_body {
+	background-color: #2e363f;
+	margin-top: 10%;
+	overflow: hidden;
+}
+.v4_login_wrap {
+    position:absolute;
+    left:0;
+    width:100%;
+}
+.v4_login_c{
+    width:648px;
+    margin:0 auto;
+    overflow:hidden;
+    clear:both;
+}
+.v4_login_logo{
+    width:211px;
+    height:94px;
+    float:left;
+    padding-top:130px;
+}
+.v4_login_logo img{
+    width:211px;
+    height:94px;
+}
+.v4_login_main{
+    float:right;
+    width:325px;
+    margin-right:48px;
+}
+.v4_login_main h3{
+    font-size:22px;   
+    line-height:46px;
+    color:#a8a8a8;
+    letter-spacing:5px;
+    text-align:center;
+    margin:0;
+}
+.v4_login_form{
+    padding-top:56px;
+}
+.v4_login_form p{
+    height:38px;
+    width:295px;
+    margin-bottom:18px;
+    position:relative;
+}
+.v4_login_form p input{
+    border:0;
+    width:255px;
+    display:block;
+    height:38px;
+    line-height:38px;
+    margin-bottom:0;
+    padding:0 2px 0 38px;
+}
+.v4_login_form p span{
+    height:38px;
+    width:38px;
+    position:absolute;
+    left:0;
+    top:0;
+}
+.v4_login_yh{
+    background:url(../../images/v4_login_04.png) center center no-repeat;
+}
+.v4_login_pwd{
+    background:url(../../images/v4_login_03.png) center center no-repeat;
+}
+.v4_login_form p a{
+     display:block;
+     background:#ff7900;
+     color:#fff;
+     text-align:center;
+     line-height:38px;
+     font-size:14px;
+ }
+ .v4_login_msg{
+ 	margin-top:-4px;
+ 	text-align: center;
+ 	color: #ff4e00;
+ 	letter-spacing: 2px;
+ 	font-size: 14px;
+ }
+.v4_login_bg{
+    margin: 0 auto;
+    width: 638px;
+    height:50px;
+    position:relative;
+}
+.v4_line{
+    position:absolute;
+}
+.v4_line_1,.v4_line_2{
+    height:2px;
+    width:665px;
+    left:180px;
+    top:62px;
+    background:-o-linear-gradient(right, #2e363f 0%,#c4c6c9 50%,#2e363f 100%);/* Opera 11.1 - 12.0 */
+    background:-moz-linear-gradient(right, #2e363f 0%,#c4c6c9 50%,#2e363f 100%);/* Firefox 3.6 - 15 */
+    background:-webkit-linear-gradient(left, #2e363f 0%,#c4c6c9 50%,#2e363f 100%);/* Safari 5.1 - 6.0 */
+    background:linear-gradient(to right, #2e363f 0%,#c4c6c9 50%,#2e363f 100%);/* 标准的语法 */
+}
+.v4_line_2{
+    top:302px;
+}
+.v4_line_3{
+    width:2px;
+    height:500px;
+    top:-50px;
+    right:0;
+    background:-o-linear-gradient(bottom, #2e363f 0%,#c4c6c9 50%,#2e363f 100%);/* Opera 11.1 - 12.0 */
+    background:-moz-linear-gradient(bottom, #2e363f 0%,#c4c6c9 50%,#2e363f 100%);/* Firefox 3.6 - 15 */
+    background:-webkit-linear-gradient(top, #2e363f 0%,#c4c6c9 50%,#2e363f 100%);/* Safari 5.1 - 6.0 */
+    background:linear-gradient(to bottom, #2e363f 0%,#c4c6c9 50%,#2e363f 100%);/* 标准的语法 */
+}
+.v4_login_cr{
+    color: #a8a8a8;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+}
+.v4_login_cr p{
+    padding: 0 10px;
+}
+@media screen and (max-width:720px){
+	.v4_login_body {
+		margin-top: 6%;
+	}
+    .v4_login_c{
+        max-width:100%;
+    }
+    .v4_login_logo{
+        float:none;
+        margin:0 auto;
+        padding-top:10%;
+    }
+    .v4_login_main {
+        float:none;
+        margin:0 auto;
+    }
+    .v4_login_main h3{
+        display:none;
+    }
+    .v4_login_bg{
+        display:none;
+    }
+}

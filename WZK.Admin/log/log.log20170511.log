@@ -1,0 +1,45 @@
+时间:2017-05-11 17:13:43.542 
+级别:Error 
+信息:WZK.Business.Admin.RightManage.GetRightActions 内部调用获取用户的有权限的按钮列表Error：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WZK.Business.Admin.RightManage.GetRightActions(Guid userId, WZKEntities context) 位置 E:\work\webSite\WZK\WZK.Business.Admin\RightManage.cs:行号 1091
+时间:2017-05-11 17:13:43.590 
+级别:Error 
+信息:WZK.Business.Admin.RightManage.GetRightMMenus 获取管理用户可用菜单列表（包含菜单归属的控制器名和Action）Error：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WZK.Business.Admin.RightManage.GetRightMMenus(Guid userId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\RightManage.cs:行号 1162
+时间:2017-05-11 17:13:43.638 
+级别:Error 
+信息:WZK.Business.Admin.RightManage.GetRightActions 获取用户的所有可用的功能Error：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WZK.Business.Admin.RightManage.GetRightActions(Guid userId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\RightManage.cs:行号 1061
+时间:2017-05-11 17:14:44.157 
+级别:Error 
+信息:WZK.Business.Admin.RightManage.GetRightActions 内部调用获取用户的有权限的按钮列表Error：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WZK.Business.Admin.RightManage.GetRightActions(Guid userId, WZKEntities context) 位置 E:\work\webSite\WZK\WZK.Business.Admin\RightManage.cs:行号 1091
+时间:2017-05-11 17:14:44.201 
+级别:Error 
+信息:WZK.Business.Admin.RightManage.GetRightMMenus 获取管理用户可用菜单列表（包含菜单归属的控制器名和Action）Error：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WZK.Business.Admin.RightManage.GetRightMMenus(Guid userId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\RightManage.cs:行号 1162
+时间:2017-05-11 17:14:44.245 
+级别:Error 
+信息:WZK.Business.Admin.RightManage.GetRightActions 获取用户的所有可用的功能Error：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WZK.Business.Admin.RightManage.GetRightActions(Guid userId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\RightManage.cs:行号 1061
+时间:2017-05-11 17:26:49.752 
+级别:Error 
+信息:WZK.Business.Admin.RightManage.GetRightActions 内部调用获取用户的有权限的按钮列表Error：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WZK.Business.Admin.RightManage.GetRightActions(Guid userId, WZKEntities context) 位置 E:\work\webSite\WZK\WZK.Business.Admin\RightManage.cs:行号 1091
+时间:2017-05-11 17:26:49.800 
+级别:Error 
+信息:WZK.Business.Admin.RightManage.GetRightMMenus 获取管理用户可用菜单列表（包含菜单归属的控制器名和Action）Error：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WZK.Business.Admin.RightManage.GetRightMMenus(Guid userId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\RightManage.cs:行号 1162
+时间:2017-05-11 17:26:49.836 
+级别:Error 
+信息:WZK.Business.Admin.RightManage.GetRightActions 获取用户的所有可用的功能Error：
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WZK.Business.Admin.RightManage.GetRightActions(Guid userId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\RightManage.cs:行号 1061

@@ -1,0 +1,153 @@
+﻿@using WZK.Common.Authentication;
+@{
+    DateTime time = DateTime.Now;
+    var user = new WZK.Common.Authentication.Impl.FormsAuthenticationService<AuthUser>().GetSiginUser();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>微智控运营管理系统-@ViewBag.Title</title>
+    <meta charset="UTF-8" />
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0" />*@
+    <meta name="viewport" content="width=1600" />
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <link rel="stylesheet" href="~/Content/bootcss/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/bootcss/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="~/Content/bootcss/uniform.css" />
+    <link rel="stylesheet" href="~/Content/bootcss/select2.css" />
+    <link rel="stylesheet" href="~/Content/bootcss/matrix-style.css" />
+    <link rel="stylesheet" href="~/Content/bootcss/matrix-media.css" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Scripts/Layer/skin/layer.css" rel="stylesheet" />
+    <link href="~/Content/css/public/PageSelect.css" type="text/css" rel="stylesheet" />
+    @RenderSection("header", false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script> 
+    <script src="~/Scripts/Layer/layer.js"></script>
+    <script src="~/Scripts/Page/public.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!--图片预览脚本-->
+    <script src="~/Scripts/img/lrz.bundle.js"></script>
+</head>
+<body>
+    <!--Header-part-->
+    <div id="header" style="height:100px;">
+        <h1><a href="dashboard.html">Task Admin</a></h1>
+    </div>
+    <!--close-Header-part-->
+    <!--top-Header-menu-->
+    <div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav">
+            <li class=""><a title="微智控运营管理系统"><span class="text task-system"  id="sysName">微智控运营管理系统</span></a></li>
+            <li class=""><a title="" href="javascript:;"><i class="icon icon-user"></i> <span class="text">欢迎 @user.Name</span></a></li>
+            <li class=""><a title="" href="/Passport/Logout"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+        </ul>
+    </div>
+    <!--sidebar-menu-->
+    <div id="sidebar">
+        <a href="#" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
+        <ul>
+            @*<li  id="homeLi"> <a href="/home"><i class="icon icon-home"></i> <span>首页</span></a> </li>*@
+            @{
+                var cache = HttpRuntime.Cache;
+                if (cache[user.Id + "menus"] == null)
+                {
+                    RightInfo.GetRightInfo().CacheRight();
+                }
+                List<WZK.Business.Admin.Models.MMenus> menus = cache[user.Id + "menus"] as List<WZK.Business.Admin.Models.MMenus>;
+                foreach (var item in menus.Where(m => m.MenuType == 0 &&m.ParentId == 0))
+                {
+                    <li class="submenu" >
+                        <a href="#"><i class="icon @item.EnglishName"></i> <span>@item.Name</span> </a>
+                        <ul>
+                            @foreach (var child in menus.Where(m => m.MenuType == 0 && m.ParentId == item.Id))
+                            {
+                                <li data="@child.ControllerAction"><a href="@child.Url">@child.Name</a></li>
+                            }
+                        </ul>
+                  </li>
+                }
+            }
+        </ul>
+    </div>
+    @RenderBody()
+    <!--Footer-part-->
+    <div class="row-fluid">
+        <div id="footer" class="span12">Copyright &copy; 2017 深圳微智控科技有限公司 </div>
+    </div>
+    <!--end-Footer-part-->
+    <script src="~/Scripts/bootstrap/matrix.js"></script> 
+        @RenderSection("scripts", false)
+    <script type="text/javascript">
+        //点击弹出图片
+        function ShowImg(a) {
+            layer.open({
+                type: 1,
+                title: false,
+                closeBtn: true,
+                maxWidth: "800",
+                area: 'auto',
+                skin: 'layui-layer-nobg', //没有背景色
+                shadeClose: true,
+                content: "<img alt=\"\" src=\"" + a + "\" />"
+            });
+        } 
+        $(document).ready(function () {
+            var href = window.location.href.toLowerCase();
+            if (~href.indexOf('http://')) {
+                href = href.replace('http://', '');//去掉http://
+            }
+            if (~href.indexOf('?')) {
+                href = href.substring(0, href.indexOf('?'));//去掉？号以及后面内容
+            }
+            if (href.indexOf('/')==-1) {
+                href = '/home/index';//如果剩下字符串不包含/,表示链接为首页
+             }
+            var Partial = href.substring(href.indexOf('/') + 1, href.length);//去掉第一个/
+            var leng = href.match(/(\/)/g).length;//计算/长度
+                if (leng > 2) {  //length>2时去掉第二个/以及后面的内容    home/index/2
+                    var arr = Partial.split('/');
+                    var str = "";
+                    for (var a = 0; a < arr.length; a++) {
+                        if (a == 2) {
+                            break;
+                        }
+                        str += arr[a] + '/';
+                    }
+                    Partial = str.substring(0, str.length - 1);
+                }
+                    var active = false;
+                    var arr = $(".submenu>ul>li>a");//所有菜单
+                    var arrLen = arr.length;
+                    for (var a = 0; a < arrLen; a++) {
+                        var Url = $(arr[a]).attr("href");
+                        if (~Url.indexOf('/')) {
+                            Url = Url.substring(Url.indexOf('/') + 1, Url.length).toLowerCase();
+                            if (Url == Partial) {//如果菜单中的链接地址等于地址栏中截取的地址则优先选中此菜单
+                                $(arr[a]).parent().parent().parent(".submenu").addClass("open");
+                                $(arr[a]).parent().addClass("active");
+                                active = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!active) {//否则判断各菜单中data是否包含(地址+","),有则选中此菜单[data中可能包含其它菜单链接]
+                        var list = $(".submenu>ul>li");
+                        var len = list.length;
+                        for (var i = 0; i < len; i++) {
+                            var data = $(list[i]).attr("data");
+                            if (~data.indexOf(Partial + ",")) {
+                                $(list[i]).parent().parent(".submenu").addClass("open");
+                                $(list[i]).addClass("active");
+                                break;
+                            }
+                        }
+                    }
+        });
+    </script>
+</body>
+</html>

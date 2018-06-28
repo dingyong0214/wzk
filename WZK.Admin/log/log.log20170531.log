@@ -1,0 +1,230 @@
+时间:2017-05-31 10:37:17.579 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 10:37:17.737 
+级别:httpPost 
+信息:GETREQUESTSTREAM:56,RESPONSE: 124ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-31 10:37:18.034 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-31 10:37:18.151 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 95ms, {"result":"sign_error"}
+时间:2017-05-31 10:37:18.257 
+级别:httpPost 
+信息:GETREQUESTSTREAM:33,RESPONSE: 103ms, {"result":"success"}
+时间:2017-05-31 10:37:18.364 
+级别:httpPost 
+信息:GETREQUESTSTREAM:33,RESPONSE: 105ms, {"result":"ok","taskId":"OSS-0531_7aa4238b70d3dfc16a912b4cd556c487","status":"successed_online"}
+时间:2017-05-31 10:37:18.378 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0531_7aa4238b70d3dfc16a912b4cd556c487","status":"successed_online"}
+时间:2017-05-31 13:05:49.741 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 13:05:49.922 
+级别:httpPost 
+信息:GETREQUESTSTREAM:77,RESPONSE: 148ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-31 13:05:50.433 
+级别:httpPost 
+信息:GETREQUESTSTREAM:42,RESPONSE: 127ms, {"result":"ok","contentId":"OSL-0531_lG8DhGuWTz8qqkhbQtkd57"}
+时间:2017-05-31 13:05:50.447 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-31 13:05:50.555 
+级别:httpPost 
+信息:GETREQUESTSTREAM:37,RESPONSE: 106ms, {"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:05:50.557 
+级别:Info 
+信息:{"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:06:17.036 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 13:06:17.203 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 97ms, {"result":"ok","contentId":"OSL-0531_otMPDSw2Om5YKMlWzs1Ja9"}
+时间:2017-05-31 13:06:17.205 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-31 13:06:17.314 
+级别:httpPost 
+信息:GETREQUESTSTREAM:35,RESPONSE: 107ms, {"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:06:17.318 
+级别:Info 
+信息:{"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:06:38.388 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 13:06:38.574 
+级别:httpPost 
+信息:GETREQUESTSTREAM:35,RESPONSE: 111ms, {"result":"ok","contentId":"OSL-0531_H8go8wy2BO8N5iLMQGc0v2"}
+时间:2017-05-31 13:06:38.578 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-31 13:06:38.695 
+级别:httpPost 
+信息:GETREQUESTSTREAM:37,RESPONSE: 113ms, {"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:06:38.697 
+级别:Info 
+信息:{"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:06:50.583 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 13:06:50.750 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 104ms, {"result":"ok","contentId":"OSL-0531_SgNticSsX9AFljxi2mtau"}
+时间:2017-05-31 13:06:50.754 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-31 13:06:50.861 
+级别:httpPost 
+信息:GETREQUESTSTREAM:34,RESPONSE: 104ms, {"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:06:50.863 
+级别:Info 
+信息:{"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:08:57.071 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 13:08:57.226 
+级别:httpPost 
+信息:GETREQUESTSTREAM:29,RESPONSE: 89ms, {"result":"ok","contentId":"OSL-0531_rUu5naopVO8U2ikyAXzHl3"}
+时间:2017-05-31 13:08:57.252 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-31 13:08:57.368 
+级别:httpPost 
+信息:GETREQUESTSTREAM:36,RESPONSE: 115ms, {"result":"ok","contentId":"OSL-0531_rUu5naopVO8U2ikyAXzHl3"}
+时间:2017-05-31 13:08:57.372 
+级别:Info 
+信息:{"result":"ok","contentId":"OSL-0531_rUu5naopVO8U2ikyAXzHl3"}
+时间:2017-05-31 13:36:25.336 
+级别:Error 
+信息:WZK.Business.Admin.TaskMgt.InsertIntoTaskDetail 批量新增任务手机Error：
+System.ArgumentOutOfRangeException: 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.get_Item(Int32 index)
+   在 WZK.Business.Admin.PublicBusiness.PushMessageToList(Nullable`1 taskId, List`1 Ids, Int32 msgType) 位置 E:\work\webSite\WZK\WZK.Business.Admin\PublicBusiness.cs:行号 266
+   在 WZK.Business.Admin.TaskMgt.InsertIntoTaskDetail(String roleName, Guid operUserId, String param, Guid taskId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\TaskMgt.cs:行号 399
+时间:2017-05-31 13:36:29.620 
+级别:Error 
+信息:WZK.Business.Admin.TaskMgt.InsertIntoTaskDetail 批量新增任务手机Error：
+System.ArgumentOutOfRangeException: 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.get_Item(Int32 index)
+   在 WZK.Business.Admin.PublicBusiness.PushMessageToList(Nullable`1 taskId, List`1 Ids, Int32 msgType) 位置 E:\work\webSite\WZK\WZK.Business.Admin\PublicBusiness.cs:行号 266
+   在 WZK.Business.Admin.TaskMgt.InsertIntoTaskDetail(String roleName, Guid operUserId, String param, Guid taskId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\TaskMgt.cs:行号 399
+时间:2017-05-31 13:36:47.817 
+级别:Error 
+信息:WZK.Business.Admin.TaskMgt.InsertIntoTaskDetail 批量新增任务手机Error：
+System.ArgumentOutOfRangeException: 索引超出范围。必须为非负值并小于集合大小。
+参数名: index
+   在 System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   在 System.Collections.Generic.List`1.get_Item(Int32 index)
+   在 WZK.Business.Admin.PublicBusiness.PushMessageToList(Nullable`1 taskId, List`1 Ids, Int32 msgType) 位置 E:\work\webSite\WZK\WZK.Business.Admin\PublicBusiness.cs:行号 266
+   在 WZK.Business.Admin.TaskMgt.InsertIntoTaskDetail(String roleName, Guid operUserId, String param, Guid taskId) 位置 E:\work\webSite\WZK\WZK.Business.Admin\TaskMgt.cs:行号 399
+时间:2017-05-31 13:41:37.213 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 13:41:37.382 
+级别:httpPost 
+信息:GETREQUESTSTREAM:68,RESPONSE: 140ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-31 13:41:37.783 
+级别:httpPost 
+信息:GETREQUESTSTREAM:28,RESPONSE: 89ms, {"result":"ok","contentId":"OSL-0531_LXaVnUxByf6xqyNIezZf22"}
+时间:2017-05-31 13:41:37.805 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-31 13:41:37.915 
+级别:httpPost 
+信息:GETREQUESTSTREAM:38,RESPONSE: 106ms, {"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:41:37.919 
+级别:Info 
+信息:{"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:43:11.356 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 13:43:11.519 
+级别:httpPost 
+信息:GETREQUESTSTREAM:30,RESPONSE: 96ms, {"result":"ok","contentId":"OSL-0531_N0UIyIxuSI8v9l9XPm3bY5"}
+时间:2017-05-31 13:43:11.523 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-31 13:43:11.638 
+级别:httpPost 
+信息:GETREQUESTSTREAM:38,RESPONSE: 113ms, {"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 13:43:11.639 
+级别:Info 
+信息:{"result":"TargetListIsNullOrSizeIs0"}
+时间:2017-05-31 16:59:35.247 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 16:59:35.394 
+级别:httpPost 
+信息:GETREQUESTSTREAM:54,RESPONSE: 124ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-31 16:59:35.784 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 95ms, {"result":"sign_error"}
+时间:2017-05-31 16:59:35.888 
+级别:httpPost 
+信息:GETREQUESTSTREAM:31,RESPONSE: 96ms, {"result":"success"}
+时间:2017-05-31 16:59:35.995 
+级别:httpPost 
+信息:GETREQUESTSTREAM:34,RESPONSE: 105ms, {"result":"ok","contentId":"OSL-0531_dhoXciIhG67nNjx3h1oBP5"}
+时间:2017-05-31 16:59:36.008 
+级别:pushMessageToList 
+信息:
+--------pushMessageToList------------
+时间:2017-05-31 16:59:36.152 
+级别:httpPost 
+信息:GETREQUESTSTREAM:37,RESPONSE: 139ms, {"result":"ok","contentId":"OSL-0531_dhoXciIhG67nNjx3h1oBP5"}
+时间:2017-05-31 16:59:36.154 
+级别:Info 
+信息:{"result":"ok","contentId":"OSL-0531_dhoXciIhG67nNjx3h1oBP5"}
+时间:2017-05-31 18:17:30.428 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 18:17:30.586 
+级别:httpPost 
+信息:GETREQUESTSTREAM:73,RESPONSE: 132ms, {"result":"ok","osList":["http://sdk.open.api.igexin.com/apiex.htm","http://sdk.open.api.getui.net/apiex.htm","http://sdk.open.api.gepush.com/apiex.htm"]}
+时间:2017-05-31 18:17:30.943 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-31 18:17:31.060 
+级别:httpPost 
+信息:GETREQUESTSTREAM:30,RESPONSE: 97ms, {"result":"ok","taskId":"OSS-0531_9e2824b483e3c9fcfbd8997221329fd9","status":"successed_online"}
+时间:2017-05-31 18:17:31.063 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0531_9e2824b483e3c9fcfbd8997221329fd9","status":"successed_online"}
+时间:2017-05-31 18:19:55.047 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 18:19:55.128 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-31 18:19:55.252 
+级别:httpPost 
+信息:GETREQUESTSTREAM:32,RESPONSE: 102ms, {"result":"ok","taskId":"OSS-0531_e98aabfff8c18b86455a4a9740c4225b","status":"successed_online"}
+时间:2017-05-31 18:19:55.254 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0531_e98aabfff8c18b86455a4a9740c4225b","status":"successed_online"}
+时间:2017-05-31 18:21:31.321 
+级别:.ctor 
+信息:DefaultConnectionLimit:2147483647
+时间:2017-05-31 18:21:31.423 
+级别:pushMessageToSingle 
+信息:--------pushMessageToSingle------------
+时间:2017-05-31 18:21:31.533 
+级别:httpPost 
+信息:GETREQUESTSTREAM:37,RESPONSE: 108ms, {"result":"ok","taskId":"OSS-0531_dc696f899b51621e197ff81e24e2752b","status":"successed_online"}
+时间:2017-05-31 18:21:31.534 
+级别:Info 
+信息:{"result":"ok","taskId":"OSS-0531_dc696f899b51621e197ff81e24e2752b","status":"successed_online"}

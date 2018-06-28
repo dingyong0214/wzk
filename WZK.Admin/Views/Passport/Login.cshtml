@@ -1,0 +1,95 @@
+﻿@model WZK.Admin.Models.Passport.LoginInfo
+<!DOCTYPE html>
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>微智控运营管理系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/public/base.css">
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.4.min.js"></script>
+</head>
+<body class="v4_login_body">
+    <div class="v4_login_wrap">
+        <div class="v4_login_c">
+            <h2 class="v4_login_logo">
+                <img src="~/Content/images/v4_logo_02.png" alt="Logo" />
+            </h2>
+            <div class="v4_login_main">
+                <h3>微智控运营管理系统</h3>               
+                <div class="v4_login_form">
+                    <p><input type="text" placeholder="请输入用户名" id="txtUserName" /><span class="v4_login_yh">&nbsp;</span></p>
+                    <p><input type="password" placeholder="请输入密码" id="txtUserPwd" /><span class="v4_login_pwd">&nbsp;</span></p>
+                    <p><a href="javascript:;" id="btnlogin">登&nbsp;&nbsp;录</a></p>
+                    <p class="v4_login_msg" id="loginmsg"></p>
+                </div>               
+            </div>
+        </div>
+    </div>
+    <div class="v4_login_bg">
+        <div class="v4_line v4_line_1"></div>
+        <div class="v4_line v4_line_2"></div>
+        <div class="v4_line v4_line_3"></div>
+    </div>
+    <div class="v4_login_cr"><p>Copyright &copy; 2017 深圳微智控科技有限公司</p></div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        var login = function () {
+            var name = $.trim($("#txtUserName").val());
+            var pwd = $.trim($("#txtUserPwd").val());
+            if (name.length == 0) {
+                showmsg("请输入用户名");
+                return;
+            }
+            if (pwd.length == 0) {
+                showmsg("请输入密码");
+                return;
+            }
+            var postData = {};
+            postData.username = name;
+            postData.password = pwd;
+            $.ajax({
+                url: "/passport/Login",
+                type: "post",
+                contentType: "application/json",
+                data: JSON.stringify(postData),
+                dataType: "json",
+                beforeSend: function () {
+                    $("#btnlogin").text("请稍后...");
+                },
+                success: function (data) {
+                    if (data.IsPass) {
+                        window.location.href = "@ViewBag.ReturnUrl";
+                    } else {
+                        showmsg(data.Desc);
+                    }
+                },
+                complete: function () {
+                    $("#btnlogin").text("登   录");
+                },
+                error: function () {
+                    showmsg("系统繁忙,请稍后再试!");
+                }
+            });
+        }
+        $("#btnlogin").click(function () {
+            login();
+        });
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                login();
+            }
+        });
+
+    })
+    function showmsg(message) {
+        $("#loginmsg").html(message);
+    }
+</script>

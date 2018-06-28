@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title></title>
+    <link href="/skin/css/mui.min.css" rel="stylesheet" />
+    <link href="/skin/css/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="mui-content">
+        <img src="/skin/img/2.png" class="logo" />
+        <div class="center">第一届会员大会第一次会议投票系统</div>
+        <div class="login">
+            <div class="input_list width-icon">
+                <span class="mui-icon iconfont icon-phone-e"></span>
+                <span class="mui-input-row">
+                    <input type="text" maxlength="11" id="txtMobile" placeholder="请输入手机号" />
+                </span>
+            </div>
+            <div class="login_btn">
+                <button type="button" class="mui-btn mui-btn-blue mui-btn-block" id="btnLogin">登录</button>
+            </div>
+            <div class="err" id="errMsg"></div>
+        </div>
+    </div>
+    <script src="/skin/js/mui.min.js"></script>
+    <script src="~/Js/jquery-1.10.2.min.js"></script>
+    <script src="/skin/js/login.js"></script>
+</body>
+</html>

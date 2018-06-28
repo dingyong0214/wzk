@@ -1,0 +1,20 @@
+﻿@using WZK.Common.Authentication;
+@{
+    Layout = null;
+    DateTime time = DateTime.Now;
+    var user = new WZK.Common.Authentication.Impl.FormsAuthenticationService<AuthUser>().GetSiginUser();
+}
+
+<div class="t">
+    <div class="logo">微智控运营管理系统</div>
+    <div class="help">
+        <div class="head_img">
+            <span>你好,@user.Name</span>
+        </div>
+        <div class="t_link">
+            @*<a target="_blank" href="/Company/CompanyList">网站首页</a>|*@
+            <a target="_blank" href="/Admin/ResetPwd">修改密码</a>|
+            <a id="login_out_button" href="/Passport/Logout">退出系统</a>
+        </div>
+    </div>
+</div>
